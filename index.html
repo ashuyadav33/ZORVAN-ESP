@@ -47,6 +47,139 @@
       background: #1683ff;
       color: #ffffff;
     }
+        /* ===== ZORVAN V2 — PREMIUM DESIGN SYSTEM ===== */
+
+    :root {
+      --bg: #05070b;
+      --bg-soft: #090d14;
+      --panel: rgba(255, 255, 255, 0.045);
+      --panel-strong: rgba(255, 255, 255, 0.07);
+
+      --white: #ffffff;
+      --text: #e9eef7;
+      --muted: #8993a5;
+
+      --blue: #1683ff;
+      --blue-bright: #42a5ff;
+      --violet: #746cff;
+
+      --line: rgba(255, 255, 255, 0.09);
+
+      --radius-lg: 28px;
+      --radius-md: 18px;
+
+      --container: 1240px;
+    }
+
+    body {
+      background:
+        radial-gradient(
+          circle at 50% -15%,
+          rgba(22, 131, 255, 0.14),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 85% 35%,
+          rgba(116, 108, 255, 0.06),
+          transparent 28%
+        ),
+        var(--bg);
+    }
+
+    /* Cinematic atmosphere */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 80px 80px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+      );
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      left: 50%;
+      top: -260px;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: -2;
+
+      background: radial-gradient(
+        circle,
+        rgba(22, 131, 255, 0.12),
+        transparent 68%
+      );
+
+      filter: blur(30px);
+    }
+
+    /* Smooth global rendering */
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Reduced motion */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Mobile foundation */
+
+    @media (max-width: 700px) {
+      :root {
+        --radius-lg: 22px;
+        --radius-md: 15px;
+      }
+
+      body::before {
+        background-size: 55px 55px;
+      }
+
+      body::after {
+        width: 360px;
+        height: 360px;
+        top: -180px;
+      }
+      }
   </style>
 </head>
 
