@@ -1,1379 +1,948 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
 
-  <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+      maximum-scale=1.0, user-scalable=no">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta name="theme-color" content="#05070b">
 
-  <meta
-    name="theme-color"
-    content="#05070b"
-  >
+<title>ZORVAN ESPORTS — PLAY. COMPETE. RISE.</title>
 
-  <title>ZORVAN — Competitive Esports</title>
+<style>
 
-  <meta
-    name="description"
-    content="ZORVAN — A new competitive esports experience."
-  >
+/* =========================================================
+   ZORVAN ESPORTS
+   PART 1 — FOUNDATION + LOGO REVEAL + NAVBAR
+   ========================================================= */
 
+:root{
+    --bg:#05070b;
+    --bg-soft:#080b12;
+    --blue:#1687ff;
+    --blue-bright:#35a7ff;
+    --white:#ffffff;
+    --muted:#8d98a8;
+    --line:rgba(255,255,255,.09);
+}
 
-  <style>
+/* ---------- RESET ---------- */
 
-    /* =================================
-       RESET
-    ================================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+html{
+    scroll-behavior:smooth;
+    background:var(--bg);
+}
 
-
-    html {
-      background: #05070b;
-      scroll-behavior: smooth;
-    }
-
-
-    body {
-      min-height: 100vh;
-
-      background: #05070b;
-
-      color: #ffffff;
-
-      font-family:
-        Arial,
-        Helvetica,
+body{
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--white);
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         sans-serif;
 
-      overflow-x: hidden;
-    }
+    overflow-x:hidden;
+}
 
+/* ---------- MAIN BACKGROUND ---------- */
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    pointer-events:none;
 
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    button {
-      font: inherit;
-    }
-
-
-    /* =================================
-       CINEMATIC BACKGROUND
-    ================================= */
-
-    body::before {
-
-      content: "";
-
-      position: fixed;
-
-      inset: 0;
-
-      pointer-events: none;
-
-      z-index: -2;
-
-      background:
-
+    background:
         radial-gradient(
-          circle at 50% -15%,
-          rgba(22,131,255,.14),
-          transparent 38%
+            circle at 50% 18%,
+            rgba(18,116,255,.12),
+            transparent 32%
         ),
-
         radial-gradient(
-          circle at 85% 35%,
-          rgba(116,108,255,.06),
-          transparent 28%
-        );
-    }
+            circle at 85% 70%,
+            rgba(35,92,255,.06),
+            transparent 30%
+        ),
+        #05070b;
+}
 
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
 
-    body::after {
-
-      content: "";
-
-      position: fixed;
-
-      width: 520px;
-
-      height: 520px;
-
-      left: 50%;
-
-      top: -260px;
-
-      transform: translateX(-50%);
-
-      pointer-events: none;
-
-      z-index: -1;
-
-      background:
-
-        radial-gradient(
-          circle,
-          rgba(22,131,255,.12),
-          transparent 68%
+    background:
+        linear-gradient(
+            115deg,
+            transparent 0%,
+            rgba(25,130,255,.035) 45%,
+            transparent 55%
         );
 
-      filter: blur(30px);
+    animation:bgSweep 9s ease-in-out infinite;
+}
+
+@keyframes bgSweep{
+
+    0%{
+        transform:translateX(-35%);
     }
 
+    50%{
+        transform:translateX(35%);
+    }
 
-    /* =================================
-       LOGO REVEAL
-    ================================= */
+    100%{
+        transform:translateX(-35%);
+    }
+}
 
-    .logo-reveal {
 
-      position: fixed;
+/* =========================================================
+   LOGO REVEAL
+   ========================================================= */
 
-      inset: 0;
+.logo-reveal{
 
-      z-index: 9999;
+    position:fixed;
+    inset:0;
 
-      display: flex;
+    z-index:9999;
 
-      flex-direction: column;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-      align-items: center;
+    background:#05070b;
 
-      justify-content: center;
+    overflow:hidden;
 
-      background: #05070b;
-
-      pointer-events: none;
-
-      animation:
-        reveal-screen-out
-        1s
-        cubic-bezier(.77,0,.18,1)
-        3.8s
+    animation:
+        revealScreenOut .9s cubic-bezier(.77,0,.18,1) 3.4s
         forwards;
-    }
+}
 
 
-    /* =================================
-       BLUE GLOW
-    ================================= */
+/* subtle blue atmospheric glow */
 
-    .logo-reveal-glow {
+.logo-reveal::before{
 
-      position: absolute;
+    content:"";
 
-      width: 460px;
+    position:absolute;
 
-      height: 460px;
+    width:55vw;
+    height:55vw;
 
-      border-radius: 50%;
+    max-width:700px;
+    max-height:700px;
 
-      background:
+    border-radius:50%;
 
+    background:
         radial-gradient(
-          circle,
-          rgba(22,131,255,.20),
-          rgba(22,131,255,.07) 38%,
-          transparent 70%
+            circle,
+            rgba(20,125,255,.20) 0%,
+            rgba(20,125,255,.08) 32%,
+            transparent 70%
         );
 
-      filter: blur(30px);
+    filter:blur(25px);
 
-      animation:
-        reveal-glow
-        3.2s
-        ease-out
-        forwards;
+    animation:revealGlow 2.8s ease-out forwards;
+
+    pointer-events:none;
+}
+
+
+/* secondary blue light */
+
+.logo-reveal::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(30,140,255,.18);
+
+    filter:blur(80px);
+
+    animation:
+        revealLight 2.8s ease-out forwards;
+
+    pointer-events:none;
+}
+
+
+@keyframes revealGlow{
+
+    0%{
+        opacity:0;
+        transform:scale(.55);
     }
 
+    35%{
+        opacity:1;
+        transform:scale(1);
+    }
 
-    /* =================================
-       LOGO WRAPPER
-    ================================= */
+    100%{
+        opacity:.45;
+        transform:scale(1.25);
+    }
+}
 
-    .reveal-logo-wrap {
 
-      position: relative;
+@keyframes revealLight{
 
-      z-index: 2;
+    0%{
+        opacity:0;
+        transform:scale(.3);
+    }
 
-      width: min(330px, 72vw);
+    40%{
+        opacity:1;
+        transform:scale(1);
+    }
 
-      display: flex;
+    100%{
+        opacity:0;
+        transform:scale(1.8);
+    }
+}
 
-      align-items: center;
 
-      justify-content: center;
+/* ---------- LOGO ---------- */
 
-      opacity: 0;
+.reveal-logo-wrap{
 
-      transform: scale(.72);
+    position:relative;
 
-      animation:
-        reveal-logo-in
+    z-index:5;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:min(78vw,620px);
+
+    animation:
+        logoEntrance 1.35s
+        cubic-bezier(.16,1,.3,1)
+        .35s
+        both;
+}
+
+
+.reveal-logo{
+
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    /*
+      IMPORTANT:
+      No canvas processing.
+      No blur.
+      No mix-blend-mode.
+      Original uploaded logo stays sharp.
+    */
+
+    filter:
+        drop-shadow(0 0 18px rgba(20,130,255,.28))
+        drop-shadow(0 0 45px rgba(20,110,255,.14));
+
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+
+@keyframes logoEntrance{
+
+    0%{
+        opacity:0;
+        transform:
+            scale(.72)
+            translateY(18px);
+        filter:
+            blur(8px)
+            drop-shadow(0 0 0 transparent);
+    }
+
+    45%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            scale(1)
+            translateY(0);
+        filter:
+            blur(0)
+            drop-shadow(0 0 18px rgba(20,130,255,.28))
+            drop-shadow(0 0 45px rgba(20,110,255,.14));
+    }
+}
+
+
+/* ---------- REVEAL LINE ---------- */
+
+.reveal-line{
+
+    position:absolute;
+
+    left:50%;
+    bottom:-55px;
+
+    width:0;
+    height:1px;
+
+    transform:translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #1687ff,
+            #ffffff,
+            #1687ff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(30,140,255,.8),
+        0 0 35px rgba(30,140,255,.35);
+
+    animation:
+        revealLine 1.2s
+        cubic-bezier(.16,1,.3,1)
         1.15s
-        cubic-bezier(.16,1,.3,1)
-        .15s
         forwards;
+}
+
+
+@keyframes revealLine{
+
+    0%{
+        width:0;
+        opacity:0;
     }
 
-
-    /* =================================
-       ACTUAL LOGO
-    ================================= */
-
-    .reveal-logo {
-
-      width: 100%;
-
-      height: auto;
-
-      display: block;
-
-      opacity: 1;
-
-      filter:
-
-        drop-shadow(
-          0 0 0
-          rgba(22,131,255,0)
-        )
-
-        blur(8px);
+    30%{
+        opacity:1;
     }
 
+    100%{
+        width:min(55vw,420px);
+        opacity:1;
+    }
+}
 
-    /* =================================
-       REVEAL LINE
-    ================================= */
 
-    .reveal-line {
+/* ---------- SCREEN EXIT ---------- */
 
-      position: relative;
+@keyframes revealScreenOut{
 
-      z-index: 2;
+    0%{
+        opacity:1;
+        transform:scale(1);
+    }
 
-      width: 0;
+    100%{
+        opacity:0;
+        visibility:hidden;
+        transform:scale(1.025);
+    }
+}
 
-      height: 1px;
 
-      margin-top: 26px;
+/* =========================================================
+   NAVBAR
+   ========================================================= */
 
-      background:
+.navbar{
 
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    height:82px;
+
+    display:flex;
+    align-items:center;
+
+    padding:
+        0
+        clamp(20px,5vw,70px);
+
+    background:
         linear-gradient(
-          90deg,
-          transparent,
-          #1683ff,
-          transparent
+            180deg,
+            rgba(5,7,11,.94),
+            rgba(5,7,11,.55),
+            transparent
         );
 
-      box-shadow:
+    backdrop-filter:blur(12px);
 
-        0 0 14px
-        rgba(22,131,255,.75);
+    border-bottom:1px solid rgba(255,255,255,.035);
+}
 
-      animation:
 
-        reveal-line-in
-        .75s
-        cubic-bezier(.16,1,.3,1)
-        .85s
-        forwards;
-    }
+/* ---------- NAV LOGO ---------- */
 
+.nav-logo-link{
 
-    /* =================================
-       LOGO ENTER
-    ================================= */
+    display:flex;
+    align-items:center;
 
-    @keyframes reveal-logo-in {
+    text-decoration:none;
 
-      0% {
+    flex-shrink:0;
+}
 
-        opacity: 0;
 
-        transform:
-          scale(.72);
+.nav-logo{
 
-        filter:
-          drop-shadow(
-            0 0 0
-            rgba(22,131,255,0)
-          )
-          blur(10px);
-      }
+    display:block;
 
+    width:
+        clamp(115px,13vw,175px);
 
-      45% {
+    height:auto;
 
-        opacity: 1;
+    /*
+      Same original logo.
+      No JS manipulation.
+    */
 
-        transform:
-          scale(.94);
-
-        filter:
-          drop-shadow(
-            0 0 28px
-            rgba(22,131,255,.18)
-          )
-          blur(3px);
-      }
-
-
-      100% {
-
-        opacity: 1;
-
-        transform:
-          scale(1);
-
-        filter:
-          drop-shadow(
-            0 0 42px
-            rgba(22,131,255,.28)
-          )
-          blur(0);
-      }
-    }
-
-
-    /* =================================
-       GLOW ANIMATION
-    ================================= */
-
-    @keyframes reveal-glow {
-
-      0% {
-
-        opacity: 0;
-
-        transform:
-          scale(.65);
-      }
-
-
-      35% {
-
-        opacity: 1;
-      }
-
-
-      100% {
-
-        opacity: .18;
-
-        transform:
-          scale(1.12);
-      }
-    }
-
-
-    /* =================================
-       LINE ANIMATION
-    ================================= */
-
-    @keyframes reveal-line-in {
-
-      to {
-
-        width: 160px;
-      }
-    }
-
-
-    /* =================================
-       SCREEN FADE
-    ================================= */
-
-    @keyframes reveal-screen-out {
-
-      0% {
-
-        opacity: 1;
-
-        visibility: visible;
-      }
-
-
-      78% {
-
-        opacity: 1;
-
-        visibility: visible;
-      }
-
-
-      100% {
-
-        opacity: 0;
-
-        visibility: hidden;
-      }
-    }
-
-
-    /* =================================
-       NAVBAR
-    ================================= */
-
-    .z-nav {
-
-      position: fixed;
-
-      top: 0;
-
-      left: 0;
-
-      right: 0;
-
-      z-index: 900;
-
-      height: 82px;
-
-      display: flex;
-
-      align-items: center;
-
-      padding:
-        0 5vw;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          rgba(5,7,11,.94),
-          rgba(5,7,11,.68)
-        );
-
-      border-bottom:
-
-        1px solid
-        rgba(255,255,255,.045);
-
-      backdrop-filter:
-        blur(18px);
-
-      -webkit-backdrop-filter:
-        blur(18px);
-    }
-
-
-    /* =================================
-       NAV LOGO
-    ================================= */
-
-    .z-nav-logo {
-
-      width: 118px;
-
-      height: auto;
-
-      display: block;
-
-      object-fit: contain;
-
-      flex-shrink: 0;
-
-      transition:
-
-        transform .3s ease,
-
-        filter .3s ease;
-    }
-
-
-    .z-nav-logo:hover {
-
-      transform:
-        scale(1.035);
-
-      filter:
-
+    filter:
         drop-shadow(
-          0 0 18px
-          rgba(22,131,255,.30)
+            0 0 12px
+            rgba(20,130,255,.18)
         );
-    }
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
 
 
-    /* =================================
-       NAV LINKS
-    ================================= */
+.nav-logo-link:hover .nav-logo{
 
-    .z-nav-links {
+    transform:translateY(-1px);
 
-      display: flex;
-
-      align-items: center;
-
-      gap: 32px;
-
-      margin-left: auto;
-    }
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(25,140,255,.4)
+        );
+}
 
 
-    .z-nav-link {
+/* ---------- NAV LINKS ---------- */
 
-      position: relative;
+.nav-links{
 
-      color:
-        rgba(255,255,255,.68);
+    display:flex;
 
-      font-size: 13px;
+    align-items:center;
 
-      font-weight: 600;
+    gap:clamp(22px,3vw,48px);
 
-      letter-spacing: .04em;
-
-      transition:
-        color .25s ease;
-    }
+    margin-left:auto;
+}
 
 
-    .z-nav-link:hover {
+.nav-links a{
 
-      color: #ffffff;
-    }
+    position:relative;
+
+    color:#aeb7c5;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.16em;
+
+    transition:
+        color .3s ease;
+}
 
 
-    .z-nav-link::after {
+.nav-links a::after{
 
-      content: "";
+    content:"";
 
-      position: absolute;
+    position:absolute;
 
-      left: 50%;
+    left:0;
+    bottom:-9px;
 
-      bottom: -8px;
+    width:0;
+    height:1px;
 
-      width: 0;
+    background:#1687ff;
 
-      height: 1px;
+    box-shadow:
+        0 0 10px rgba(22,135,255,.7);
 
-      transform:
-        translateX(-50%);
-
-      background: #1683ff;
-
-      box-shadow:
-
-        0 0 10px
-        rgba(22,131,255,.7);
-
-      transition:
+    transition:
         width .3s ease;
-    }
+}
 
 
-    .z-nav-link:hover::after {
+.nav-links a:hover{
 
-      width: 100%;
-    }
-
-
-    /* =================================
-       NAV CTA
-    ================================= */
-
-    .z-nav-cta {
-
-      margin-left: 30px;
-
-      padding:
-        11px 18px;
-
-      border:
-
-        1px solid
-        rgba(22,131,255,.45);
-
-      border-radius: 6px;
-
-      color: #ffffff;
-
-      background:
-
-        rgba(22,131,255,.08);
-
-      font-size: 12px;
-
-      font-weight: 700;
-
-      letter-spacing: .05em;
-
-      transition:
-        .3s ease;
-    }
+    color:#fff;
+}
 
 
-    .z-nav-cta:hover {
+.nav-links a:hover::after{
 
-      background:
-        rgba(22,131,255,.16);
+    width:100%;
+}
 
-      border-color:
-        rgba(22,131,255,.8);
 
-      box-shadow:
+/* ---------- CTA ---------- */
 
+.nav-cta{
+
+    margin-left:
+        clamp(20px,3vw,42px);
+
+    padding:
+        11px 19px;
+
+    border:1px solid
+        rgba(50,155,255,.5);
+
+    border-radius:6px;
+
+    background:
+        rgba(20,110,255,.08);
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:.13em;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+}
+
+
+.nav-cta:hover{
+
+    background:
+        rgba(20,125,255,.18);
+
+    border-color:
+        rgba(70,170,255,.9);
+
+    box-shadow:
         0 0 24px
-        rgba(22,131,255,.16);
+        rgba(20,125,255,.18);
 
-      transform:
-        translateY(-1px);
-    }
-
-
-    /* =================================
-       MOBILE MENU
-    ================================= */
-
-    .z-menu {
-
-      display: none;
-
-      width: 40px;
-
-      height: 40px;
-
-      margin-left: auto;
-
-      align-items: center;
-
-      justify-content: center;
-
-      border:
-
-        1px solid
-        rgba(255,255,255,.10);
-
-      border-radius: 8px;
-
-      background:
-
-        rgba(255,255,255,.035);
-
-      color: #ffffff;
-
-      cursor: pointer;
-    }
+    transform:translateY(-1px);
+}
 
 
-    .z-menu-lines {
+/* ---------- MOBILE MENU ---------- */
 
-      width: 18px;
+.mobile-menu{
 
-      display: flex;
+    display:none;
 
-      flex-direction: column;
+    margin-left:auto;
 
-      gap: 4px;
-    }
+    width:42px;
+    height:42px;
 
+    border:1px solid
+        rgba(255,255,255,.1);
 
-    .z-menu-lines span {
+    border-radius:8px;
 
-      width: 100%;
+    background:
+        rgba(255,255,255,.025);
 
-      height: 1px;
+    align-items:center;
+    justify-content:center;
 
-      background: #ffffff;
-    }
+    flex-direction:column;
 
-
-    /* =================================
-       MAIN PLACEHOLDER
-    ================================= */
-
-    .z-main {
-
-      min-height: 100vh;
-
-      padding-top: 82px;
-    }
+    gap:5px;
+}
 
 
-    /* =================================
-       MOBILE
-    ================================= */
+.mobile-menu span{
 
-    @media (max-width: 700px) {
+    width:17px;
+    height:1px;
 
-      body::after {
-
-        width: 360px;
-
-        height: 360px;
-
-        top: -180px;
-      }
+    background:#fff;
+}
 
 
-      .logo-reveal-glow {
+/* =========================================================
+   EMPTY HERO FOUNDATION
+   ========================================================= */
 
-        width: 320px;
+.hero{
 
-        height: 320px;
-      }
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+        130px 7vw 80px;
+
+    overflow:hidden;
+}
 
 
-      .reveal-logo-wrap {
+.hero-grid{
 
-        width:
-          min(250px, 68vw);
-      }
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        80px 80px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.45),
+            transparent 80%
+        );
+}
 
 
-      .reveal-line {
+.hero-content{
 
-        margin-top: 20px;
-      }
+    position:relative;
+
+    z-index:2;
+
+    width:min(1200px,100%);
+
+    text-align:center;
+}
 
 
-      .z-nav {
+.hero-kicker{
 
-        height: 68px;
+    color:#6e7c8e;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.3em;
+
+    text-transform:uppercase;
+}
+
+
+.hero-title{
+
+    margin-top:18px;
+
+    font-size:
+        clamp(42px,8vw,105px);
+
+    line-height:.9;
+
+    letter-spacing:-.055em;
+
+    font-weight:900;
+}
+
+
+.hero-title span{
+
+    color:#1687ff;
+
+    text-shadow:
+        0 0 35px
+        rgba(22,135,255,.22);
+}
+
+
+.hero-subtitle{
+
+    max-width:620px;
+
+    margin:
+        28px auto 0;
+
+    color:#8994a4;
+
+    font-size:
+        clamp(14px,1.4vw,17px);
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:800px){
+
+    .navbar{
+
+        height:70px;
 
         padding:
-          0 20px;
-      }
-
-
-      .z-nav-logo {
-
-        width: 92px;
-      }
-
-
-      .z-nav-links,
-      .z-nav-cta {
-
-        display: none;
-      }
-
-
-      .z-menu {
-
-        display: flex;
-      }
-
-
-      .z-main {
-
-        padding-top: 68px;
-      }
+            0 18px;
     }
 
-  </style>
 
+    .nav-links,
+    .nav-cta{
+
+        display:none;
+    }
+
+
+    .mobile-menu{
+
+        display:flex;
+    }
+
+
+    .nav-logo{
+
+        width:125px;
+    }
+
+
+    .reveal-logo-wrap{
+
+        width:78vw;
+    }
+
+
+    .reveal-line{
+
+        bottom:-35px;
+    }
+
+
+    .hero{
+
+        padding:
+            100px 20px 60px;
+    }
+
+
+    .hero-grid{
+
+        background-size:
+            55px 55px;
+    }
+
+
+    .hero-title{
+
+        font-size:
+            clamp(45px,15vw,75px);
+    }
+
+}
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media(max-width:380px){
+
+    .nav-logo{
+
+        width:112px;
+    }
+
+
+    .reveal-logo-wrap{
+
+        width:82vw;
+    }
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-  <!-- =================================
-       ZORVAN LOGO REVEAL
-  ================================= -->
+<!-- =====================================================
+     LOGO REVEAL
+     ===================================================== -->
 
-  <div class="logo-reveal">
-
-    <div class="logo-reveal-glow"></div>
-
+<div class="logo-reveal">
 
     <div class="reveal-logo-wrap">
 
-      <img
-        src="./logo.png"
-        class="reveal-logo"
-        id="revealLogo"
-        alt="ZORVAN"
-      >
+        <img
+            src="./logo.png"
+            class="reveal-logo"
+            alt="ZORVAN ESPORTS"
+        >
+
+        <div class="reveal-line"></div>
 
     </div>
 
-
-    <div class="reveal-line"></div>
-
-  </div>
+</div>
 
 
-  <!-- =================================
-       NAVBAR
-  ================================= -->
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
 
-  <nav class="z-nav">
-
+<header class="navbar">
 
     <a
-      href="#"
-      aria-label="ZORVAN Home"
+        href="#"
+        class="nav-logo-link"
+        aria-label="ZORVAN Esports Home"
     >
 
-      <img
-        src="./logo.png"
-        class="z-nav-logo"
-        id="navLogo"
-        alt="ZORVAN"
-      >
+        <img
+            src="./logo.png"
+            class="nav-logo"
+            alt="ZORVAN ESPORTS"
+        >
 
     </a>
 
 
-    <div class="z-nav-links">
+    <nav class="nav-links">
 
+        <a href="#about">ABOUT</a>
 
-      <a
-        href="#about"
-        class="z-nav-link"
-      >
-        ABOUT
-      </a>
+        <a href="#features">FEATURES</a>
 
+        <a href="#legacy">LEGACY</a>
 
-      <a
-        href="#features"
-        class="z-nav-link"
-      >
-        FEATURES
-      </a>
+        <a href="#community">COMMUNITY</a>
 
-
-      <a
-        href="#legacy"
-        class="z-nav-link"
-      >
-        LEGACY
-      </a>
-
-
-      <a
-        href="#community"
-        class="z-nav-link"
-      >
-        COMMUNITY
-      </a>
-
-
-    </div>
+    </nav>
 
 
     <a
-      href="#register"
-      class="z-nav-cta"
+        href="#preregister"
+        class="nav-cta"
     >
-      PRE-REGISTER
+        PRE-REGISTER
     </a>
 
 
     <button
-      class="z-menu"
-      aria-label="Open menu"
+        class="mobile-menu"
+        aria-label="Open menu"
     >
 
-      <span class="z-menu-lines">
-
         <span></span>
-
         <span></span>
-
         <span></span>
-
-      </span>
 
     </button>
 
+</header>
 
-  </nav>
 
+<!-- =====================================================
+     HERO FOUNDATION
+     ===================================================== -->
 
-  <!-- =================================
-       MAIN
-  ================================= -->
+<main>
 
-  <main class="z-main">
+<section class="hero">
 
-  </main>
+    <div class="hero-grid"></div>
 
+    <div class="hero-content">
 
-  <!-- =================================
-       WHITE BACKGROUND REMOVER
-       EDGE-CONNECTED FLOOD FILL
-  ================================= -->
+        <div class="hero-kicker">
+            THE NEXT GENERATION OF ESPORTS
+        </div>
 
-  <script>
+        <h1 class="hero-title">
+            PLAY.<br>
+            <span>COMPETE.</span><br>
+            RISE.
+        </h1>
 
-    (function () {
+        <p class="hero-subtitle">
+            A competitive esports platform built around players,
+            performance, community and legacy.
+        </p>
 
-      const source = "./logo.png";
+    </div>
 
-      const revealLogo =
-        document.getElementById("revealLogo");
+</section>
 
-      const navLogo =
-        document.getElementById("navLogo");
-
-
-      const image =
-        new Image();
-
-
-      image.onload = function () {
-
-        try {
-
-          const canvas =
-            document.createElement("canvas");
-
-
-          const ctx =
-            canvas.getContext("2d", {
-              willReadFrequently: true
-            });
-
-
-          canvas.width =
-            image.naturalWidth;
-
-
-          canvas.height =
-            image.naturalHeight;
-
-
-          ctx.drawImage(
-            image,
-            0,
-            0
-          );
-
-
-          const width =
-            canvas.width;
-
-
-          const height =
-            canvas.height;
-
-
-          const imageData =
-            ctx.getImageData(
-              0,
-              0,
-              width,
-              height
-            );
-
-
-          const pixels =
-            imageData.data;
-
-
-          /*
-             White-background threshold.
-
-             Only pixels connected to the
-             OUTER EDGES are removed.
-
-             This helps preserve white
-             details inside the actual logo.
-          */
-
-          const threshold = 245;
-
-
-          function isWhite(index) {
-
-            const r =
-              pixels[index];
-
-
-            const g =
-              pixels[index + 1];
-
-
-            const b =
-              pixels[index + 2];
-
-
-            const a =
-              pixels[index + 3];
-
-
-            return (
-
-              a > 0 &&
-
-              r >= threshold &&
-
-              g >= threshold &&
-
-              b >= threshold
-
-            );
-          }
-
-
-          const visited =
-            new Uint8Array(
-              width * height
-            );
-
-
-          const queue = [];
-
-
-          function addPixel(x, y) {
-
-            if (
-              x < 0 ||
-              x >= width ||
-              y < 0 ||
-              y >= height
-            ) {
-
-              return;
-            }
-
-
-            const position =
-              y * width + x;
-
-
-            if (
-              visited[position]
-            ) {
-
-              return;
-            }
-
-
-            const index =
-              position * 4;
-
-
-            if (
-              !isWhite(index)
-            ) {
-
-              return;
-            }
-
-
-            visited[position] = 1;
-
-            queue.push(position);
-          }
-
-
-          /*
-             Start flood fill from
-             every edge pixel.
-          */
-
-          for (
-            let x = 0;
-            x < width;
-            x++
-          ) {
-
-            addPixel(x, 0);
-
-            addPixel(
-              x,
-              height - 1
-            );
-          }
-
-
-          for (
-            let y = 0;
-            y < height;
-            y++
-          ) {
-
-            addPixel(0, y);
-
-            addPixel(
-              width - 1,
-              y
-            );
-          }
-
-
-          let pointer = 0;
-
-
-          while (
-            pointer < queue.length
-          ) {
-
-            const position =
-              queue[pointer++];
-
-
-            const x =
-              position % width;
-
-
-            const y =
-              Math.floor(
-                position / width
-              );
-
-
-            const index =
-              position * 4;
-
-
-            /*
-               Make background
-               transparent.
-            */
-
-            pixels[index + 3] = 0;
-
-
-            addPixel(
-              x + 1,
-              y
-            );
-
-
-            addPixel(
-              x - 1,
-              y
-            );
-
-
-            addPixel(
-              x,
-              y + 1
-            );
-
-
-            addPixel(
-              x,
-              y - 1
-            );
-          }
-
-
-          /*
-             Clean very light edge pixels
-             around the removed background.
-          */
-
-          for (
-            let y = 0;
-            y < height;
-            y++
-          ) {
-
-            for (
-              let x = 0;
-              x < width;
-              x++
-            ) {
-
-              const position =
-                y * width + x;
-
-
-              if (
-                visited[position]
-              ) {
-
-                continue;
-              }
-
-
-              const index =
-                position * 4;
-
-
-              const r =
-                pixels[index];
-
-
-              const g =
-                pixels[index + 1];
-
-
-              const b =
-                pixels[index + 2];
-
-
-              const a =
-                pixels[index + 3];
-
-
-              if (
-                a > 0 &&
-                r > 232 &&
-                g > 232 &&
-                b > 232
-              ) {
-
-                let nearTransparent =
-                  false;
-
-
-                const neighbors = [
-
-                  [x + 1, y],
-
-                  [x - 1, y],
-
-                  [x, y + 1],
-
-                  [x, y - 1]
-
-                ];
-
-
-                for (
-                  const neighbor
-                  of neighbors
-                ) {
-
-                  const nx =
-                    neighbor[0];
-
-
-                  const ny =
-                    neighbor[1];
-
-
-                  if (
-                    nx < 0 ||
-                    nx >= width ||
-                    ny < 0 ||
-                    ny >= height
-                  ) {
-
-                    continue;
-                  }
-
-
-                  const nPosition =
-                    ny * width + nx;
-
-
-                  if (
-                    visited[nPosition]
-                  ) {
-
-                    nearTransparent = true;
-
-                    break;
-                  }
-                }
-
-
-                if (
-                  nearTransparent
-                ) {
-
-                  pixels[index + 3] =
-                    Math.max(
-                      0,
-                      255 -
-                      Math.round(
-                        (
-                          r +
-                          g +
-                          b -
-                          696
-                        ) * 4
-                      )
-                    );
-                }
-              }
-            }
-          }
-
-
-          ctx.putImageData(
-            imageData,
-            0,
-            0
-          );
-
-
-          /*
-             Convert cleaned canvas
-             into a transparent PNG.
-          */
-
-          const cleanLogo =
-            canvas.toDataURL(
-              "image/png"
-            );
-
-
-          revealLogo.src =
-            cleanLogo;
-
-
-          navLogo.src =
-            cleanLogo;
-
-        }
-
-        catch (error) {
-
-          /*
-             If processing fails,
-             keep original logo visible.
-          */
-
-          revealLogo.src =
-            source;
-
-
-          navLogo.src =
-            source;
-        }
-
-      };
-
-
-      image.onerror = function () {
-
-        console.error(
-          "ZORVAN logo could not be loaded."
-        );
-
-      };
-
-
-      image.src =
-        source;
-
-    })();
-
-  </script>
+</main>
 
 
 </body>
-
 </html>
