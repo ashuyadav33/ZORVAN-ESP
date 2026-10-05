@@ -385,7 +385,247 @@
   }
 
 }
+/* ==============================
+   ZORVAN — PREMIUM NAVBAR
+============================== */
 
+.z-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 900;
+
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 5vw;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5,7,11,.92),
+      rgba(5,7,11,.62)
+    );
+
+  border-bottom: 1px solid
+    rgba(255,255,255,.045);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* Navbar logo */
+
+.z-nav-logo {
+  width: 118px;
+  height: auto;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  transition:
+    transform .35s ease,
+    filter .35s ease;
+}
+
+.z-nav-logo:hover {
+  transform: scale(1.035);
+
+  filter:
+    drop-shadow(
+      0 0 18px
+      rgba(22,131,255,.3)
+    );
+}
+
+
+/* Navigation links */
+
+.z-nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 34px;
+
+  margin-left: auto;
+}
+
+
+.z-nav-link {
+  position: relative;
+
+  color: rgba(255,255,255,.68);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: .04em;
+
+  transition:
+    color .25s ease;
+}
+
+
+.z-nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -8px;
+
+  width: 0;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 10px
+    rgba(22,131,255,.7);
+
+  transition:
+    width .3s ease;
+}
+
+
+.z-nav-link:hover {
+  color: #ffffff;
+}
+
+
+.z-nav-link:hover::after {
+  width: 100%;
+}
+
+
+/* CTA */
+
+.z-nav-cta {
+  margin-left: 32px;
+
+  padding: 11px 19px;
+
+  border: 1px solid
+    rgba(22,131,255,.45);
+
+  border-radius: 6px;
+
+  color: #ffffff;
+
+  background:
+    rgba(22,131,255,.08);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: .05em;
+
+  transition:
+    background .3s ease,
+    border-color .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+
+.z-nav-cta:hover {
+  background:
+    rgba(22,131,255,.16);
+
+  border-color:
+    rgba(22,131,255,.8);
+
+  box-shadow:
+    0 0 24px
+    rgba(22,131,255,.16);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* Mobile menu button */
+
+.z-menu {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  margin-left: auto;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    rgba(255,255,255,.1);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+
+.z-menu-lines {
+  width: 18px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.z-menu-lines span {
+  width: 100%;
+  height: 1px;
+
+  background: #ffffff;
+}
+
+
+/* ==============================
+   MOBILE NAVBAR
+============================== */
+
+@media (max-width: 700px) {
+
+  .z-nav {
+    height: 68px;
+
+    padding: 0 20px;
+  }
+
+
+  .z-nav-logo {
+    width: 92px;
+  }
+
+
+  .z-nav-links,
+  .z-nav-cta {
+    display: none;
+  }
+
+
+  .z-menu {
+    display: flex;
+  }
+
+}
   </style>
 
 </head>
@@ -420,7 +660,70 @@
 
 
 </body>
+<!-- ==============================
+     ZORVAN PREMIUM NAVBAR
+============================== -->
 
+<nav class="z-nav">
+
+  <a
+    href="#"
+    class="z-nav-brand"
+    aria-label="ZORVAN Home"
+  >
+
+    <img
+      src="logo.png"
+      class="z-nav-logo"
+      alt="ZORVAN"
+    >
+
+  </a>
+
+
+  <div class="z-nav-links">
+
+    <a href="#about" class="z-nav-link">
+      ABOUT
+    </a>
+
+    <a href="#features" class="z-nav-link">
+      FEATURES
+    </a>
+
+    <a href="#legacy" class="z-nav-link">
+      LEGACY
+    </a>
+
+    <a href="#community" class="z-nav-link">
+      COMMUNITY
+    </a>
+
+  </div>
+
+
+  <a
+    href="#register"
+    class="z-nav-cta"
+  >
+    PRE-REGISTER
+  </a>
+
+
+  <button
+    class="z-menu"
+    aria-label="Open menu"
+  >
+
+    <span class="z-menu-lines">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+  </button>
+
+</nav>
 </body>
 
 </html>
