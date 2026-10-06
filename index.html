@@ -2,42 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ZORVAN ESPORTS</title>
-</head>
-<body>
 
-</body>
-</html>
 <style>
+*{box-sizing:border-box}
+html,body{
+margin:0;width:100%;height:100%;
+background:#05070b;overflow:hidden
+}
+
 #zv-reveal{
-position:fixed;inset:0;z-index:9999;
+position:fixed;inset:0;
 display:grid;place-items:center;
-background:#05070b;overflow:hidden;
+background:#05070b;
 }
-#zv-reveal img{
+
+#zv-logo{
 width:min(62vw,420px);
-display:block;opacity:0;
-animation:zv-logo 1.5s ease .25s forwards;
+opacity:0;
+animation:logo 1.5s ease .2s forwards;
 }
+
 #zv-name{
-position:absolute;top:62%;
-color:#fff;font:700 12px Arial;
-letter-spacing:.35em;opacity:0;
-animation:zv-name 1s ease 1.15s forwards;
+position:absolute;
+bottom:45px;
+left:0;
+width:100%;
+text-align:center;
+color:#fff;
+font:700 12px Arial;
+letter-spacing:.35em;
+opacity:0;
+animation:name 1s ease 1.2s forwards;
 }
-@keyframes zv-logo{
+
+@keyframes logo{
 from{opacity:0;transform:scale(.82)}
 to{opacity:1;transform:scale(1)}
 }
-@keyframes zv-name{to{opacity:.8}}
+
+@keyframes name{
+to{opacity:.8}
+}
+
 @media(max-width:600px){
-#zv-reveal img{width:72vw}
-#zv-name{top:61%;font-size:9px;letter-spacing:.25em}
+#zv-logo{width:72vw}
+#zv-name{
+bottom:28px;
+font-size:9px;
+letter-spacing:.25em;
+}
 }
 </style>
+</head>
 
+<body>
 <div id="zv-reveal">
-<img src="./logo.png" alt="ZORVAN">
+<img id="zv-logo" src="./logo.png" alt="ZORVAN">
 <div id="zv-name">ZORVAN ESPORTS</div>
 </div>
+</body>
+</html>
