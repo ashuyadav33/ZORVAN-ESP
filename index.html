@@ -2249,3 +2249,36 @@
   }
 })();
 </script>
+<style>
+html,body{margin:0;background:#05070b}
+#zv-reveal{
+position:fixed;inset:0;z-index:9999;
+display:grid;place-items:center;
+background:#05070b;overflow:hidden;
+}
+#zv-reveal img{
+width:min(62vw,420px);
+opacity:0;
+transform:scale(.82);
+animation:zvLogo 1.5s cubic-bezier(.2,.8,.2,1) .3s forwards;
+}
+#zv-name{
+position:absolute;top:62%;
+color:#fff;
+font:700 12px Arial;
+letter-spacing:.35em;
+opacity:0;
+animation:zvName 1s ease 1.25s forwards;
+}
+@keyframes zvLogo{
+to{opacity:1;transform:scale(1)}
+}
+@keyframes zvName{
+to{opacity:.8}
+}
+</style>
+
+<div id="zv-reveal">
+<img src="./logo.png" alt="ZORVAN">
+<div id="zv-name">ZORVAN ESPORTS</div>
+</div>
