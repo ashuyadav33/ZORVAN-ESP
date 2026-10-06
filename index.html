@@ -7,108 +7,73 @@
 
 <style>
 *{box-sizing:border-box}
-html,body{
-margin:0;width:100%;height:100%;
-background:#05070b;overflow:hidden
-}
+html,body{margin:0;background:#05070b;color:#fff;font-family:Arial,sans-serif}
+body{overflow-x:hidden}
 
-#zv-reveal{
-position:fixed;inset:0;
+#reveal{
+position:fixed;inset:0;z-index:10;
 display:grid;place-items:center;
 background:#05070b;
+animation:leave .7s ease 1.9s forwards;
+pointer-events:none;
 }
-
-#zv-logo{
+#logo{
 width:min(62vw,420px);
-opacity:0;
-animation:logo 1.5s ease .2s forwards;
+animation:show 1.2s ease forwards;
+}
+#name{
+position:absolute;bottom:42px;width:100%;
+text-align:center;font-size:12px;font-weight:700;
+letter-spacing:.35em;opacity:0;
+animation:showName 1s ease 1s forwards;
 }
 
-#zv-name{
-position:absolute;
-bottom:45px;
-left:0;
-width:100%;
-text-align:center;
-color:#fff;
-font:700 12px Arial;
-letter-spacing:.35em;
-opacity:0;
-animation:name 1s ease 1.2s forwards;
+#hero{
+min-height:100vh;
+display:flex;align-items:center;
+padding:80px 8vw;
 }
+#hero div{max-width:750px}
+small{color:#1683ff;font-weight:700;letter-spacing:.2em}
+h1{
+font-size:clamp(55px,8vw,110px);
+line-height:.9;margin:20px 0;
+letter-spacing:-.05em;
+}
+h1 span{color:#1683ff}
+p{max-width:560px;color:#8d96a5;font-size:16px;line-height:1.7}
 
-@keyframes logo{
+@keyframes show{
 from{opacity:0;transform:scale(.82)}
 to{opacity:1;transform:scale(1)}
 }
-
-@keyframes name{
-to{opacity:.8}
-}
+@keyframes showName{to{opacity:.8}}
+@keyframes leave{to{opacity:0;visibility:hidden}}
 
 @media(max-width:600px){
-#zv-logo{width:72vw}
-#zv-name{
-bottom:28px;
-font-size:9px;
-letter-spacing:.25em;
-}
+#logo{width:72vw}
+#name{bottom:28px;font-size:9px;letter-spacing:.25em}
+#hero{padding:70px 22px}
+h1{font-size:clamp(48px,17vw,75px)}
+p{font-size:14px}
 }
 </style>
 </head>
 
 <body>
-<div id="zv-reveal">
-<img id="zv-logo" src="./logo.png" alt="ZORVAN">
-<div id="zv-name">ZORVAN ESPORTS</div>
-</div>
-</body>
-</html>
-<style>
-#zv-hero{
-min-height:100vh;background:#05070b;color:#fff;
-display:flex;align-items:center;padding:90px 8vw;
-}
-#zv-copy{max-width:700px}
-#zv-copy small{
-color:#1683ff;letter-spacing:.22em;font-weight:700
-}
-#zv-copy h1{
-font:900 clamp(55px,8vw,110px)/.9 Arial;
-margin:18px 0;letter-spacing:-.05em
-}
-#zv-copy h1 span{color:#1683ff}
-#zv-copy p{
-max-width:560px;color:#8d96a5;
-font:16px/1.7 Arial
-}
-@media(max-width:600px){
-#zv-hero{padding:70px 22px}
-#zv-copy h1{font-size:clamp(48px,17vw,75px)}
-#zv-copy p{font-size:14px}
-}
-</style>
 
-<section id="zv-hero">
-<div id="zv-copy">
+<div id="reveal">
+<img id="logo" src="./logo.png" alt="ZORVAN">
+<div id="name">ZORVAN ESPORTS</div>
+</div>
+
+<section id="hero">
+<div>
 <small>THE NEXT GENERATION OF ESPORTS</small>
 <h1>PLAY.<br>COMPETE.<br><span>RISE.</span></h1>
-<p>
-A competitive esports platform built around players,
-performance, community and legacy.
-</p>
+<p>A competitive esports platform built around players, performance, community and legacy.</p>
 </div>
 </section>
-<style>
-#zv-reveal{
-animation:zv-hide .6s ease 1.8s forwards;
-pointer-events:none;
-}
-@keyframes zv-hide{
-to{opacity:0;visibility:hidden}
-}
-#zv-hero{
-position:relative;
-z-index:1;
-}
-</style>
+
+</body>
+</html>
