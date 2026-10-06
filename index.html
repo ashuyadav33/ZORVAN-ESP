@@ -4055,4 +4055,32 @@ body::after{
             "translateY(30px)";
 
         item.style.transition =
-      
+          item.style.transition =
+        "opacity .8s ease, transform .8s ease";
+
+    });
+
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                    observer.unobserve(entry.target);
+                }
+
+            });
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    reveal.forEach(item => observer.observe(item));
+
+})();
+</script>
