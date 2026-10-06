@@ -2924,3 +2924,1136 @@ body::after{
 
 })();
 </script>
+<script>
+/* =========================================================
+   ZORVAN — FEATURE EXPLORER
+   END-PASTE ONLY
+   ========================================================= */
+
+(function () {
+
+    if (document.getElementById("zorvan-feature-explorer")) return;
+
+    const style = document.createElement("style");
+
+    style.textContent = `
+
+    /* ================= FEATURE EXPLORER ================= */
+
+    #zorvan-feature-explorer{
+
+        position:relative;
+
+        padding:150px 7vw 160px;
+
+        overflow:hidden;
+
+        background:#05070b;
+
+        border-top:1px solid rgba(255,255,255,.035);
+    }
+
+
+    #zorvan-feature-explorer::before{
+
+        content:"";
+
+        position:absolute;
+
+        width:650px;
+        height:650px;
+
+        left:-420px;
+        top:25%;
+
+        border-radius:50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(20,125,255,.075),
+                transparent 68%
+            );
+
+        pointer-events:none;
+    }
+
+
+    .zfx-inner{
+
+        position:relative;
+
+        z-index:2;
+
+        max-width:1380px;
+
+        margin:auto;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .zfx-label{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:12px;
+
+        color:#4d9cff;
+
+        font-size:10px;
+
+        font-weight:800;
+
+        letter-spacing:.22em;
+
+        margin-bottom:25px;
+    }
+
+
+    .zfx-label::before{
+
+        content:"";
+
+        width:28px;
+        height:1px;
+
+        background:#1687ff;
+
+        box-shadow:
+            0 0 12px rgba(20,135,255,.7);
+    }
+
+
+    .zfx-title{
+
+        margin:0;
+
+        color:#f4f8fc;
+
+        font-size:
+            clamp(42px,5.2vw,76px);
+
+        line-height:.98;
+
+        letter-spacing:-.055em;
+
+        font-weight:850;
+    }
+
+
+    .zfx-title span{
+
+        color:#1687ff;
+    }
+
+
+    .zfx-intro{
+
+        max-width:620px;
+
+        margin:25px 0 0;
+
+        color:#778493;
+
+        font-size:14px;
+
+        line-height:1.85;
+    }
+
+
+    /* ---------- MAIN EXPLORER ---------- */
+
+    .zfx-explorer{
+
+        display:grid;
+
+        grid-template-columns:
+            270px minmax(0,1fr);
+
+        gap:55px;
+
+        margin-top:90px;
+
+        min-height:560px;
+    }
+
+
+    /* ---------- FEATURE NAV ---------- */
+
+    .zfx-nav{
+
+        display:flex;
+
+        flex-direction:column;
+
+        border-left:1px solid rgba(255,255,255,.06);
+    }
+
+
+    .zfx-tab{
+
+        position:relative;
+
+        min-height:75px;
+
+        padding:0 20px;
+
+        display:flex;
+
+        align-items:center;
+
+        gap:15px;
+
+        background:transparent;
+
+        border:0;
+
+        border-bottom:1px solid rgba(255,255,255,.045);
+
+        color:#566273;
+
+        text-align:left;
+
+        cursor:pointer;
+
+        transition:
+            color .3s ease,
+            background .3s ease;
+    }
+
+
+    .zfx-tab::before{
+
+        content:"";
+
+        position:absolute;
+
+        left:-1px;
+
+        top:0;
+
+        width:2px;
+
+        height:100%;
+
+        background:#1687ff;
+
+        transform:scaleY(0);
+
+        transform-origin:center;
+
+        transition:
+            transform .3s ease;
+    }
+
+
+    .zfx-tab.active{
+
+        color:#eef4fa;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(20,130,255,.075),
+                transparent
+            );
+    }
+
+
+    .zfx-tab.active::before{
+
+        transform:scaleY(1);
+
+        box-shadow:
+            0 0 15px rgba(20,135,255,.6);
+    }
+
+
+    .zfx-tab-number{
+
+        color:#344152;
+
+        font-size:9px;
+
+        font-weight:800;
+
+        letter-spacing:.1em;
+
+        min-width:22px;
+    }
+
+
+    .zfx-tab.active
+    .zfx-tab-number{
+
+        color:#1687ff;
+    }
+
+
+    .zfx-tab-name{
+
+        font-size:11px;
+
+        font-weight:800;
+
+        letter-spacing:.08em;
+    }
+
+
+    /* ---------- PREVIEW ---------- */
+
+    .zfx-preview{
+
+        position:relative;
+
+        min-height:560px;
+
+        border:1px solid rgba(255,255,255,.07);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.035),
+                rgba(255,255,255,.012)
+            );
+
+        overflow:hidden;
+
+        box-shadow:
+            0 35px 100px rgba(0,0,0,.3);
+    }
+
+
+    .zfx-preview::before{
+
+        content:"";
+
+        position:absolute;
+
+        width:450px;
+        height:450px;
+
+        right:-180px;
+        top:-180px;
+
+        border-radius:50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(20,130,255,.15),
+                transparent 68%
+            );
+
+        pointer-events:none;
+    }
+
+
+    .zfx-grid{
+
+        position:absolute;
+
+        inset:0;
+
+        opacity:.18;
+
+        background-image:
+            linear-gradient(
+                rgba(255,255,255,.035) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255,255,255,.035) 1px,
+                transparent 1px
+            );
+
+        background-size:45px 45px;
+
+        mask-image:
+            linear-gradient(
+                to bottom,
+                black,
+                transparent
+            );
+    }
+
+
+    .zfx-content{
+
+        position:relative;
+
+        z-index:2;
+
+        min-height:560px;
+
+        padding:48px;
+
+        display:flex;
+
+        flex-direction:column;
+
+        justify-content:space-between;
+    }
+
+
+    .zfx-preview-top{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+    }
+
+
+    .zfx-preview-kicker{
+
+        color:#1687ff;
+
+        font-size:9px;
+
+        font-weight:800;
+
+        letter-spacing:.18em;
+    }
+
+
+    .zfx-preview-status{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:7px;
+
+        color:#536071;
+
+        font-size:8px;
+
+        font-weight:800;
+
+        letter-spacing:.1em;
+    }
+
+
+    .zfx-preview-status i{
+
+        width:5px;
+        height:5px;
+
+        border-radius:50%;
+
+        background:#1687ff;
+
+        box-shadow:
+            0 0 9px rgba(20,135,255,.8);
+    }
+
+
+    .zfx-preview-main{
+
+        max-width:650px;
+    }
+
+
+    .zfx-preview-index{
+
+        color:#344152;
+
+        font-size:9px;
+
+        font-weight:800;
+
+        letter-spacing:.18em;
+
+        margin-bottom:18px;
+    }
+
+
+    .zfx-preview-title{
+
+        margin:0;
+
+        color:#edf4fa;
+
+        font-size:
+            clamp(30px,4vw,56px);
+
+        line-height:1;
+
+        letter-spacing:-.045em;
+
+        font-weight:850;
+    }
+
+
+    .zfx-preview-text{
+
+        max-width:530px;
+
+        margin-top:22px;
+
+        color:#687687;
+
+        font-size:12px;
+
+        line-height:1.8;
+    }
+
+
+    /* ---------- MOCK UI ---------- */
+
+    .zfx-mock{
+
+        margin-top:38px;
+
+        display:grid;
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        gap:10px;
+
+        max-width:700px;
+    }
+
+
+    .zfx-mock-card{
+
+        min-height:95px;
+
+        padding:16px;
+
+        border:1px solid rgba(255,255,255,.06);
+
+        background:
+            rgba(0,0,0,.18);
+    }
+
+
+    .zfx-mock-line{
+
+        width:55%;
+
+        height:5px;
+
+        background:
+            rgba(255,255,255,.08);
+
+        margin-bottom:12px;
+    }
+
+
+    .zfx-mock-line.small{
+
+        width:35%;
+
+        height:3px;
+
+        background:
+            rgba(20,130,255,.35);
+    }
+
+
+    .zfx-mock-value{
+
+        margin-top:17px;
+
+        color:#dfe7ef;
+
+        font-size:17px;
+
+        font-weight:800;
+    }
+
+
+    /* ---------- PREVIEW FOOTER ---------- */
+
+    .zfx-preview-bottom{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        padding-top:25px;
+
+        border-top:1px solid rgba(255,255,255,.055);
+    }
+
+
+    .zfx-preview-note{
+
+        color:#4f5c6c;
+
+        font-size:8px;
+
+        font-weight:800;
+
+        letter-spacing:.12em;
+    }
+
+
+    .zfx-preview-arrow{
+
+        width:38px;
+        height:38px;
+
+        display:flex;
+
+        align-items:center;
+        justify-content:center;
+
+        border:1px solid rgba(20,130,255,.22);
+
+        color:#1687ff;
+
+        font-size:14px;
+    }
+
+
+    /* ---------- MOBILE TABS ---------- */
+
+    .zfx-mobile-tabs{
+
+        display:none;
+    }
+
+
+    /* ---------- MOBILE ---------- */
+
+    @media(max-width:800px){
+
+        #zorvan-feature-explorer{
+
+            padding:105px 22px 110px;
+        }
+
+
+        .zfx-title{
+
+            font-size:
+                clamp(40px,11.5vw,58px);
+        }
+
+
+        .zfx-intro{
+
+            font-size:13px;
+        }
+
+
+        .zfx-explorer{
+
+            display:block;
+
+            min-height:auto;
+
+            margin-top:55px;
+        }
+
+
+        .zfx-nav{
+
+            display:none;
+        }
+
+
+        .zfx-mobile-tabs{
+
+            display:flex;
+
+            gap:8px;
+
+            overflow-x:auto;
+
+            padding-bottom:12px;
+
+            margin-bottom:18px;
+
+            scrollbar-width:none;
+        }
+
+
+        .zfx-mobile-tabs::-webkit-scrollbar{
+
+            display:none;
+        }
+
+
+        .zfx-mobile-tab{
+
+            flex:0 0 auto;
+
+            padding:12px 15px;
+
+            border:1px solid rgba(255,255,255,.07);
+
+            background:
+                rgba(255,255,255,.018);
+
+            color:#596676;
+
+            font-size:8px;
+
+            font-weight:800;
+
+            letter-spacing:.09em;
+
+            white-space:nowrap;
+        }
+
+
+        .zfx-mobile-tab.active{
+
+            color:#fff;
+
+            border-color:
+                rgba(20,135,255,.4);
+
+            background:
+                rgba(20,130,255,.08);
+        }
+
+
+        .zfx-preview{
+
+            min-height:510px;
+        }
+
+
+        .zfx-content{
+
+            min-height:510px;
+
+            padding:28px;
+        }
+
+
+        .zfx-preview-title{
+
+            font-size:
+                clamp(30px,9vw,43px);
+        }
+
+
+        .zfx-preview-text{
+
+            font-size:11px;
+        }
+
+
+        .zfx-mock{
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap:7px;
+
+            margin-top:28px;
+        }
+
+
+        .zfx-mock-card{
+
+            min-height:80px;
+
+            padding:12px;
+        }
+
+
+        .zfx-mock-value{
+
+            font-size:14px;
+        }
+
+    }
+
+
+    @media(max-width:390px){
+
+        .zfx-content{
+
+            padding:24px;
+        }
+
+        .zfx-preview{
+
+            min-height:490px;
+        }
+
+        .zfx-content{
+
+            min-height:490px;
+        }
+
+    }
+
+    `;
+
+    document.head.appendChild(style);
+
+
+    /* ---------- DATA ---------- */
+
+    const features = [
+
+        {
+            name:"PLAYER PROFILE",
+            title:"YOUR IDENTITY. YOUR RECORD.",
+            text:"Build a competitive profile around your IGN, game identity, performance, achievements and history.",
+            note:"PLAYER IDENTITY SYSTEM"
+        },
+
+        {
+            name:"TOURNAMENTS",
+            title:"FIND YOUR NEXT ARENA.",
+            text:"Discover featured, upcoming and completed tournaments and follow your competitive journey from entry to result.",
+            note:"COMPETITIVE TOURNAMENTS"
+        },
+
+        {
+            name:"MATCHES",
+            title:"EVERY MATCH COUNTS.",
+            text:"Keep your competitive matches, results and verified performances connected to your player journey.",
+            note:"MATCH & PERFORMANCE"
+        },
+
+        {
+            name:"TEAMS",
+            title:"COMPETE AS ONE.",
+            text:"Create a team identity, manage members and build a history together through competitive play.",
+            note:"TEAM ECOSYSTEM"
+        },
+
+        {
+            name:"RANKINGS",
+            title:"PERFORMANCE SPEAKS.",
+            text:"Track competitive progress through rankings built around verified performance and results.",
+            note:"COMPETITIVE RANKINGS"
+        },
+
+        {
+            name:"COMMUNITY",
+            title:"THE ARENA IS MORE THAN MATCHES.",
+            text:"Connect with players, teams and the wider ZORVAN community through a dedicated competitive ecosystem.",
+            note:"PLAYER COMMUNITY"
+        }
+
+    ];
+
+
+    /* ---------- SECTION ---------- */
+
+    const section = document.createElement("section");
+
+    section.id = "zorvan-feature-explorer";
+
+    section.innerHTML = `
+
+        <div class="zfx-inner">
+
+            <div class="zfx-label">
+                FEATURE EXPLORER
+            </div>
+
+            <h2 class="zfx-title">
+                BUILT AROUND
+                <span>THE PLAYER.</span>
+            </h2>
+
+            <p class="zfx-intro">
+                Explore the systems that will shape the ZORVAN
+                competitive experience — from player identity
+                to tournaments, teams and rankings.
+            </p>
+
+
+            <div class="zfx-explorer">
+
+                <div class="zfx-nav"></div>
+
+                <div class="zfx-mobile-tabs"></div>
+
+
+                <div class="zfx-preview">
+
+                    <div class="zfx-grid"></div>
+
+                    <div class="zfx-content">
+
+                        <div class="zfx-preview-top">
+
+                            <span class="zfx-preview-kicker">
+                                ZORVAN / PREVIEW
+                            </span>
+
+                            <span class="zfx-preview-status">
+                                <i></i>
+                                PLANNED
+                            </span>
+
+                        </div>
+
+
+                        <div class="zfx-preview-main">
+
+                            <div class="zfx-preview-index">
+                                01 / PLAYER PROFILE
+                            </div>
+
+                            <h3 class="zfx-preview-title">
+                                YOUR IDENTITY.
+                                YOUR RECORD.
+                            </h3>
+
+                            <p class="zfx-preview-text">
+                                Build a competitive profile around
+                                your IGN, game identity, performance,
+                                achievements and history.
+                            </p>
+
+
+                            <div class="zfx-mock">
+
+                                <div class="zfx-mock-card">
+                                    <div class="zfx-mock-line"></div>
+                                    <div class="zfx-mock-line small"></div>
+                                    <div class="zfx-mock-value">PROFILE</div>
+                                </div>
+
+                                <div class="zfx-mock-card">
+                                    <div class="zfx-mock-line"></div>
+                                    <div class="zfx-mock-line small"></div>
+                                    <div class="zfx-mock-value">STATS</div>
+                                </div>
+
+                                <div class="zfx-mock-card">
+                                    <div class="zfx-mock-line"></div>
+                                    <div class="zfx-mock-line small"></div>
+                                    <div class="zfx-mock-value">HISTORY</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="zfx-preview-bottom">
+
+                            <span class="zfx-preview-note">
+                                FEATURE PREVIEW / V1
+                            </span>
+
+                            <span class="zfx-preview-arrow">
+                                ↗
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+
+    /* ---------- BUILD TABS ---------- */
+
+    const nav =
+        section.querySelector(".zfx-nav");
+
+    const mobileTabs =
+        section.querySelector(".zfx-mobile-tabs");
+
+
+    features.forEach((feature,index) => {
+
+        const tab = document.createElement("button");
+
+        tab.className =
+            "zfx-tab" +
+            (index === 0 ? " active" : "");
+
+        tab.innerHTML = `
+            <span class="zfx-tab-number">
+                0${index + 1}
+            </span>
+            <span class="zfx-tab-name">
+                ${feature.name}
+            </span>
+        `;
+
+        nav.appendChild(tab);
+
+
+        const mobileTab =
+            document.createElement("button");
+
+        mobileTab.className =
+            "zfx-mobile-tab" +
+            (index === 0 ? " active" : "");
+
+        mobileTab.textContent =
+            feature.name;
+
+        mobileTabs.appendChild(mobileTab);
+
+
+        const activate = () => {
+
+            nav.querySelectorAll(".zfx-tab")
+                .forEach(x =>
+                    x.classList.remove("active")
+                );
+
+            mobileTabs.querySelectorAll(".zfx-mobile-tab")
+                .forEach(x =>
+                    x.classList.remove("active")
+                );
+
+            tab.classList.add("active");
+            mobileTab.classList.add("active");
+
+
+            const indexText =
+                String(index + 1).padStart(2,"0");
+
+
+            section.querySelector(
+                ".zfx-preview-index"
+            ).textContent =
+                `${indexText} / ${feature.name}`;
+
+
+            section.querySelector(
+                ".zfx-preview-title"
+            ).textContent =
+                feature.title;
+
+
+            section.querySelector(
+                ".zfx-preview-text"
+            ).textContent =
+                feature.text;
+
+
+            section.querySelector(
+                ".zfx-preview-note"
+            ).textContent =
+                `${feature.note} / V1`;
+
+
+            const mockValues =
+                section.querySelectorAll(
+                    ".zfx-mock-value"
+                );
+
+
+            mockValues[0].textContent =
+                index === 0 ? "PROFILE" :
+                index === 1 ? "DISCOVER" :
+                index === 2 ? "MATCHES" :
+                index === 3 ? "TEAM" :
+                index === 4 ? "RANK" :
+                "COMMUNITY";
+
+
+            mockValues[1].textContent =
+                index === 0 ? "STATS" :
+                index === 1 ? "DETAILS" :
+                index === 2 ? "RESULT" :
+                index === 3 ? "MEMBERS" :
+                index === 4 ? "FORM" :
+                "CHAT";
+
+
+            mockValues[2].textContent =
+                index === 0 ? "HISTORY" :
+                index === 1 ? "JOIN" :
+                index === 2 ? "PERFORMANCE" :
+                index === 3 ? "HISTORY" :
+                index === 4 ? "PROGRESS" :
+                "CONNECT";
+
+
+            const preview =
+                section.querySelector(".zfx-preview");
+
+            preview.animate(
+                [
+                    {
+                        opacity:.45,
+                        transform:"translateY(8px)"
+                    },
+                    {
+                        opacity:1,
+                        transform:"translateY(0)"
+                    }
+                ],
+                {
+                    duration:420,
+                    easing:"cubic-bezier(.16,1,.3,1)"
+                }
+            );
+
+        };
+
+
+        tab.addEventListener(
+            "click",
+            activate
+        );
+
+        mobileTab.addEventListener(
+            "click",
+            activate
+        );
+
+    });
+
+
+    /* ---------- INSERT ---------- */
+
+    const philosophy =
+        document.getElementById("zorvan-philosophy");
+
+    if (philosophy) {
+
+        philosophy.insertAdjacentElement(
+            "afterend",
+            section
+        );
+
+    } else {
+
+        document.body.appendChild(section);
+
+    }
+
+
+    /* ---------- REVEAL ---------- */
+
+    const reveal =
+        section.querySelectorAll(
+            ".zfx-label, .zfx-title, .zfx-intro, .zfx-explorer"
+        );
+
+
+    reveal.forEach(item => {
+
+        item.style.opacity = "0";
+
+        item.style.transform =
+            "translateY(30px)";
+
+        item.style.transition =
+      
