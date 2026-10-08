@@ -3,59 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ZORVAN ESPORTS</title>
+<title>ZORVAN — Play. Compete. Rise.</title>
 
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;background:#05070b;color:#fff;font-family:Arial,sans-serif}
-body{overflow-x:hidden}
-
+html{scroll-behavior:smooth}
+body{
+margin:0;background:#05070b;color:#fff;
+font-family:Arial,sans-serif;overflow-x:hidden
+}
 #reveal{
-position:fixed;inset:0;z-index:10;
-display:grid;place-items:center;
-background:#05070b;
-animation:leave .7s ease 1.9s forwards;
-pointer-events:none;
+position:fixed;inset:0;z-index:99;
+background:#05070b;display:grid;
+place-items:center;transition:opacity .7s ease
 }
-#logo{
-width:min(62vw,420px);
-animation:show 1.2s ease forwards;
-}
-#name{
-position:absolute;bottom:42px;width:100%;
-text-align:center;font-size:12px;font-weight:700;
-letter-spacing:.35em;opacity:0;
-animation:showName 1s ease 1s forwards;
+#reveal.hide{opacity:0;pointer-events:none}
+#reveal img{width:72vw;max-width:380px}
+#reveal span{
+position:absolute;bottom:35px;
+font-size:10px;letter-spacing:.35em;color:#fff
 }
 
 #hero{
-min-height:100vh;
+min-height:100svh;padding:110px 22px 70px;
 display:flex;align-items:center;
-padding:80px 8vw;
+position:relative;overflow:hidden
 }
-#hero div{max-width:750px}
-small{color:#1683ff;font-weight:700;letter-spacing:.2em}
+#hero:before{
+content:"";position:absolute;
+width:430px;height:430px;
+right:-230px;top:20%;
+border-radius:50%;
+background:#1683ff22;filter:blur(90px)
+}
+.hero-content{position:relative;z-index:2}
+.eyebrow{
+color:#1683ff;font-size:10px;
+font-weight:800;letter-spacing:.18em
+}
 h1{
-font-size:clamp(55px,8vw,110px);
-line-height:.9;margin:20px 0;
-letter-spacing:-.05em;
+font-size:clamp(52px,17vw,76px);
+line-height:.88;letter-spacing:-.06em;
+margin:18px 0
 }
 h1 span{color:#1683ff}
-p{max-width:560px;color:#8d96a5;font-size:16px;line-height:1.7}
-
-@keyframes show{
-from{opacity:0;transform:scale(.82)}
-to{opacity:1;transform:scale(1)}
+.hero-text{
+color:#8993a3;font-size:14px;
+line-height:1.7;max-width:340px
 }
-@keyframes showName{to{opacity:.8}}
-@keyframes leave{to{opacity:0;visibility:hidden}}
-
-@media(max-width:600px){
-#logo{width:72vw}
-#name{bottom:28px;font-size:9px;letter-spacing:.25em}
-#hero{padding:70px 22px}
-h1{font-size:clamp(48px,17vw,75px)}
-p{font-size:14px}
+.cta{display:flex;gap:10px;margin-top:28px}
+.cta a{
+padding:15px 14px;text-decoration:none;
+font-size:10px;font-weight:800;
+letter-spacing:.08em
+}
+.primary{background:#1683ff;color:#fff}
+.secondary{
+border:1px solid #1683ff66;color:#fff;
+background:#ffffff05
 }
 </style>
 </head>
@@ -63,550 +68,395 @@ p{font-size:14px}
 <body>
 
 <div id="reveal">
-<img id="logo" src="./logo.png" alt="ZORVAN">
-<div id="name">ZORVAN ESPORTS</div>
+<img src="./logo.png" alt="ZORVAN">
+<span>ZORVAN ESPORTS</span>
 </div>
 
 <section id="hero">
-<div>
-<small>THE NEXT GENERATION OF ESPORTS</small>
+<div class="hero-content">
+<div class="eyebrow">THE NEXT GENERATION OF ESPORTS</div>
 <h1>PLAY.<br>COMPETE.<br><span>RISE.</span></h1>
-<p>A competitive esports platform built around players, performance, community and legacy.</p>
+<p class="hero-text">
+A competitive esports platform built around players,
+performance, community and legacy.
+</p>
+<div class="cta">
+<a class="primary" href="#explore">EXPLORE ZORVAN</a>
+<a class="secondary" href="#register">PRE-REGISTER</a>
+</div>
 </div>
 </section>
+
+<script>
+setTimeout(()=>{
+document.querySelector("#reveal").classList.add("hide");
+},2200);
+</script>
 
 </body>
 </html>
+
 <style>
-#hero{
-align-items:flex-start;
-padding-top:24vh;
+#hero{isolation:isolate}
+
+#hero::before{
+width:520px;height:520px;
+right:-300px;top:5%;
+background:#1683ff20;
+filter:blur(100px);
+animation:zvGlow 5s ease-in-out infinite alternate;
 }
 
-@media(max-width:600px){
-#hero{
-padding-top:18vh;
-}
-}
-</style>
-<style>
-#zv-nav{
-position:fixed;top:0;left:0;width:100%;
-height:76px;padding:16px 6vw;
-display:flex;align-items:center;
-z-index:5;
-background:linear-gradient(#05070bdd,transparent);
-}
-#zv-nav img{width:115px;height:auto}
-@media(max-width:600px){
-#zv-nav{height:64px;padding:12px 20px}
-#zv-nav img{width:92px}
-}
-</style>
-
-<nav id="zv-nav">
-<img src="./logo.png" alt="ZORVAN">
-</nav>
-<style>
-#zv-links{margin-left:auto;display:flex;gap:28px}
-#zv-links a{color:#aeb7c6;text-decoration:none;font:600 12px Arial;letter-spacing:.08em}
-#zv-links a:hover{color:#1683ff}
-#zv-menu{display:none;color:#fff;font-size:22px}
-@media(max-width:600px){
-#zv-links{display:none}
-#zv-menu{display:block;margin-left:auto}
-}
-</style>
-
-<script>
-document.querySelector("#zv-nav").insertAdjacentHTML("beforeend",`
-<div id="zv-links">
-<a href="#about">ABOUT</a>
-<a href="#features">FEATURES</a>
-<a href="#tournaments">TOURNAMENTS</a>
-<a href="#community">COMMUNITY</a>
-</div>
-<div id="zv-menu">☰</div>
-`);
-</script>
-<script>
-document.querySelector("#zv-nav").innerHTML=`
-<img src="./logo.png" alt="ZORVAN">
-<div id="zv-links">
-<a href="#about">ABOUT</a>
-<a href="#features">FEATURES</a>
-<a href="#tournaments">TOURNAMENTS</a>
-<a href="#community">COMMUNITY</a>
-</div>
-<script> 
-<style>
-#hero{position:relative;overflow:hidden}
-#hero:before{
-content:"";position:absolute;width:520px;height:520px;
-right:-180px;top:10%;border-radius:50%;
-background:#1683ff1c;filter:blur(110px);
-}
-#hero div{position:relative;z-index:2}
-@media(max-width:600px){
-#hero:before{
-width:300px;height:300px;
-right:-150px;top:22%;
-filter:blur(80px);
-}
-#hero{min-height:92vh}
-#hero div{width:100%}
-}
-</style>
-<style>
-#zv-visual{
-position:absolute;right:7vw;top:50%;
-transform:translateY(-42%);
-width:360px;height:460px;
-border:1px solid #1683ff30;
-background:#080c14;
-box-shadow:0 0 80px #1683ff18;
-z-index:1;
-}
-#zv-visual:before{
-content:"ZORVAN";position:absolute;
-inset:0;display:grid;place-items:center;
-font-size:42px;font-weight:900;
-letter-spacing:.12em;color:#1683ff18;
-}
-@media(max-width:600px){
-#zv-visual{
-position:relative;right:auto;top:auto;
-transform:none;width:100%;height:180px;
-margin-top:45px;
-}
-#zv-visual:before{font-size:25px}
-}
-<script>
-document.querySelector("#hero").insertAdjacentHTML(
-"beforeend",`<div id="zv-visual"></div>`
-);
-</script>
-<style>
-#zv-visual{
-display:flex;flex-direction:column;
-justify-content:flex-end;padding:22px;
-overflow:hidden;
-}
-#zv-visual:after{
+#hero::after{
 content:"";
-position:absolute;inset:0;
-background:linear-gradient(145deg,#1683ff12,transparent 45%,#ffffff03);
+  <style>
+h1{
+text-shadow:0 0 0 transparent;
+animation:zvTitle 3s ease-in-out infinite alternate;
 }
-.zv-line{
-height:7px;margin:10px 0;
-background:#ffffff0d;border-radius:10px;
-}
-.zv-line.blue{width:72%;background:#1683ff55}
-.zv-line.short{width:45%}
-@media(max-width:600px){
-#zv-visual{height:170px;padding:16px}
-.zv-line{margin:7px 0;height:5px}
-}
-</style>
 
-<script>
-document.querySelector("#zv-visual").innerHTML=`
-<div class="zv-line blue"></div>
-<div class="zv-line"></div>
-<div class="zv-line short"></div>`;
-</script>
-<style>
-#zv-visual{padding:24px}
-.zv-tag{font-size:10px;color:#1683ff;letter-spacing:.18em;font-weight:800}
-.zv-title{margin:8px 0 18px;font-size:24px;font-weight:900}
-.zv-stat{display:flex;justify-content:space-between;
-padding:13px 0;border-bottom:1px solid #ffffff0b;
-color:#8791a1;font-size:11px}
-.zv-stat b{color:#fff}
-@media(max-width:600px){
-#zv-visual{padding:18px}
-.zv-title{font-size:19px;margin:6px 0 10px}
-.zv-stat{padding:8px 0;font-size:10px}
+@keyframes zvTitle{
+from{text-shadow:0 0 0 #1683ff00}
+to{text-shadow:0 0 24px #1683ff22}
 }
-</style>
 
-<script>
-document.querySelector("#zv-visual").innerHTML=`
-<div class="zv-tag">ZORVAN / FEATURE PREVIEW</div>
-<div class="zv-title">PLAYER IDENTITY</div>
-<div class="zv-stat"><span>PLAYER</span><b>YOUR LEGACY</b></div>
-<div class="zv-stat"><span>RANK</span><b>PERFORMANCE</b></div>
-<div class="zv-stat"><span>HISTORY</span><b>COMPETITIVE</b></div>`;
-</script>
-<style>
-#zv-about{
-padding:130px 8vw;background:#070a10;color:#fff;
-}
-#zv-about small{color:#1683ff;letter-spacing:.2em}
-#zv-about h2{
-font-size:clamp(40px,6vw,78px);
-line-height:.95;margin:18px 0 25px;
-letter-spacing:-.04em;
-}
-#zv-about p{
-max-width:700px;color:#8993a3;
-font-size:17px;line-height:1.8;
-}
-@media(max-width:600px){
-#zv-about{padding:90px 22px}
-#zv-about h2{font-size:44px}
-#zv-about p{font-size:14px;line-height:1.7}
-}
-</style>
-<script>
-document.querySelector("#hero").insertAdjacentHTML("afterend",`
-<section id="zv-about">
-<small>BUILT FOR THE COMPETITIVE</small>
-<h2>MORE THAN<br>A TOURNAMENT.</h2>
-<p>ZORVAN is being built as a competitive esports platform where players can build their identity, compete, perform and create a lasting legacy.</p>
-</section>
-`);
-</script>
-<style>
-#zv-path{padding:120px 8vw;background:#05070b}
-#zv-path h2{font-size:clamp(38px,6vw,72px);margin:15px 0 55px}
-.zv-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#ffffff12}
-.zv-step{padding:28px 20px;background:#05070b}
-.zv-step b{font-size:13px;color:#1683ff}
-.zv-step h3{font-size:20px;margin:28px 0 10px}
-.zv-step p{font-size:12px;line-height:1.6;color:#737d8d}
-@media(max-width:600px){
-#zv-path{padding:85px 22px}
-.zv-steps{grid-template-columns:1fr}
-.zv-step{padding:22px}
-.zv-step h3{margin:12px 0 7px}
-}
-</style>
-<script>
-document.querySelector("#zv-about").insertAdjacentHTML("afterend",`
-<section id="zv-path">
-<small>THE ZORVAN PATH</small>
-<h2>BUILD YOUR<br>LEGACY.</h2>
-<div class="zv-steps">
-<div class="zv-step"><b>01</b><h3>REGISTER</h3><p>Enter the competitive world.</p></div>
-<div class="zv-step"><b>02</b><h3>BUILD</h3><p>Create your player identity.</p></div>
-<div class="zv-step"><b>03</b><h3>COMPETE</h3><p>Enter tournaments and matches.</p></div>
-<div class="zv-step"><b>04</b><h3>PERFORM</h3><p>Turn performance into progress.</p></div>
-<div class="zv-step"><b>05</b><h3>RISE</h3><p>Build a legacy that lasts.</p></div>
-</div>
-</section>`);
-</script>
-<style>
-#zv-features{padding:120px 8vw;background:#070a10;color:#fff}
-#zv-features h2{font-size:clamp(40px,6vw,76px);margin:15px 0 50px}
-.zv-feature-grid{display:grid;grid-template-columns:230px 1fr;gap:20px}
-.zv-feature-list{display:grid;gap:8px}
-.zv-feature-list button{padding:18px;text-align:left;background:#0b0f17;
-border:1px solid #ffffff0b;color:#778192;cursor:pointer}
-.zv-feature-list button.active{color:#fff;border-color:#1683ff}
-.zv-feature-panel{min-height:390px;padding:45px;background:#05070b;
-border:1px solid #ffffff0d}
-.zv-feature-panel h3{font-size:38px;margin:15px 0}
-.zv-feature-panel p{max-width:520px;color:#8993a3;line-height:1.8}
-@media(max-width:600px){
-#zv-features{padding:85px 22px}
-.zv-feature-grid{grid-template-columns:1fr}
-.zv-feature-list{display:flex;overflow-x:auto}
-.zv-feature-list button{min-width:135px}
-.zv-feature-panel{min-height:260px;padding:25px}
-.zv-feature-panel h3{font-size:28px}
-}
-</style>
-<script>
-document.querySelector("#zv-path").insertAdjacentHTML("afterend",`
-<section id="zv-features">
-<small>EXPLORE ZORVAN</small>
-<h2>BUILT AROUND<br>THE PLAYER.</h2>
-<div class="zv-feature-grid">
-<div class="zv-feature-list">
-<button class="active">PLAYER</button>
-<button>TOURNAMENTS</button>
-<button>TEAMS</button>
-<button>RANKINGS</button>
-</div>
-<div class="zv-feature-panel">
-<small>PLAYER IDENTITY</small>
-<h3>YOUR GAME.<br>YOUR LEGACY.</h3>
-<p>Build a competitive identity with your profile, performance history, achievements, rankings and team journey.</p>
-</div>
-</div>
-</section>`);
-</script>
-<script>
-const data={
-PLAYER:["PLAYER IDENTITY","YOUR GAME.<br>YOUR LEGACY.","Build your competitive identity with profile, performance history, achievements and rankings."],
-TOURNAMENTS:["COMPETITIVE ARENA","ENTER. COMPETE. RISE.","Discover upcoming tournaments, match details, rules, slots and competitive opportunities."],
-TEAMS:["TEAM IDENTITY","BUILD TOGETHER.","Create teams, manage members, track team history and compete as a unit."],
-RANKINGS:["PERFORMANCE","EARN YOUR PLACE.","Track verified competitive performance across players, teams and tournaments."]
-};
-document.querySelectorAll(".zv-feature-list button").forEach(btn=>{
-btn.onclick=()=>{
-document.querySelectorAll(".zv-feature-list button").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-let d=data[btn.textContent];
-document.querySelector(".zv-feature-panel").innerHTML=
-`<small>${d[0]}</small><h3>${d[1]}</h3><p>${d[2]}</p>`;
-};
-});
-</script>
-<style>
-#zv-legacy{padding:130px 8vw;background:#05070b;color:#fff}
-#zv-legacy h2{font-size:clamp(42px,6vw,80px);line-height:.92;margin:18px 0}
-#zv-legacy p{max-width:620px;color:#8993a3;line-height:1.8}
-.zv-timeline{display:flex;gap:0;margin-top:65px;border-top:1px solid #ffffff12}
-.zv-mile{flex:1;padding:25px 15px;border-right:1px solid #ffffff0b}
-.zv-mile b{color:#1683ff;font-size:11px}
-.zv-mile h3{font-size:16px;margin:20px 0 8px}
-.zv-mile span{color:#687282;font-size:11px}
-@media(max-width:600px){
-#zv-legacy{padding:90px 22px}
-.zv-timeline{display:grid;grid-template-columns:1fr 1fr;margin-top:45px}
-.zv-mile{border-right:0;border-bottom:1px solid #ffffff0b}
-}
-  <script>
-document.querySelector("#zv-features").insertAdjacentHTML("afterend",`
-<section id="zv-legacy">
-<small>PLAYER LEGACY</small>
-<h2>EVERY MATCH<br>LEAVES A MARK.</h2>
-<p>Your competitive journey grows with every verified performance — from your first match to the milestones that define your career.</p>
-<div class="zv-timeline">
-<div class="zv-mile"><b>01</b><h3>FIRST MATCH</h3><span>BEGIN</span></div>
-<div class="zv-mile"><b>02</b><h3>TOP FINISH</h3><span>PROGRESS</span></div>
-<div class="zv-mile"><b>03</b><h3>TOURNAMENT WIN</h3><span>ACHIEVE</span></div>
-<div class="zv-mile"><b>04</b><h3>100 MATCHES</h3><span>CONSISTENCY</span></div>
-</div>
-</section>`);
-</script>
-</style>
-<style>
-#zv-comp{padding:120px 8vw;background:#070a10}
-#zv-comp h2{font-size:clamp(42px,6vw,76px);line-height:.95;margin:18px 0}
-.zv-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:55px}
-.zv-box{padding:28px;background:#05070b;border:1px solid #ffffff0b}
-.zv-box b{color:#1683ff;font-size:11px}
-.zv-box h3{margin:25px 0 10px;font-size:18px}
-.zv-box p{margin:0;color:#737d8d;font-size:12px;line-height:1.6}
-@media(max-width:600px){
-#zv-comp{padding:85px 22px}
-.zv-flow{grid-template-columns:1fr 1fr;margin-top:40px}
-.zv-box{padding:20px}
-.zv-box h3{margin:15px 0 8px;font-size:15px}
-}
-</style>
-<script>
-document.querySelector("#zv-legacy").insertAdjacentHTML("afterend",`
-<section id="zv-comp">
-<small>COMPETITIVE EXPERIENCE</small>
-<h2>FROM ENTRY<br>TO RESULT.</h2>
-<div class="zv-flow">
-<div class="zv-box"><b>01</b><h3>DISCOVER</h3><p>Find tournaments built for competitive players.</p></div>
-<div class="zv-box"><b>02</b><h3>JOIN</h3><p>Review rules, slots and match details.</p></div>
-<div class="zv-box"><b>03</b><h3>COMPETE</h3><p>Enter the lobby and play your match.</p></div>
-<div class="zv-box"><b>04</b><h3>RESULT</h3><p>Verified performance becomes part of your journey.</p></div>
-</div>
-</section>`);
-</script>
-<style>
-#hero{
+.cta a{
 position:relative;
-min-height:100svh;
-padding-bottom:70px;
+overflow:hidden;
+transition:
+transform .25s ease,
+box-shadow .25s ease,
+border-color .25s ease;
 }
-#hero:after{
+
+.cta a::before{
 content:"";
 position:absolute;
-left:8%;right:8%;bottom:35px;
-height:1px;
+top:0;
+left:-120%;
+width:80%;
+height:100%;
 background:linear-gradient(
-90deg,transparent,#1683ff,transparent
+90deg,
+transparent,
+#ffffff55,
+transparent
 );
-box-shadow:0 0 18px #1683ff;
-opacity:.75;
+transform:skewX(-20deg);
+transition:left .55s ease;
 }
-@media(max-width:600px){
-#hero{
-min-height:82svh;
-padding-bottom:35px;
-}
-#hero:after{
-left:15%;right:15%;
-bottom:18px;
-box-shadow:0 0 14px #1683ff;
-}
-}
-</style>
-<style>
-.zv-feature-list button{
-position:relative;overflow:hidden;
-transition:transform .18s ease,
-background .25s ease,border-color .25s ease;
--webkit-tap-highlight-color:transparent;
-}
-.zv-feature-list button:active{
-transform:scale(.94);
-background:#1683ff18;
-border-color:#1683ff!important;
-box-shadow:0 0 24px #1683ff25;
-}
-.zv-feature-list button.active{
-background:linear-gradient(90deg,#1683ff18,transparent);
-box-shadow:inset 3px 0 #1683ff;
-}
-@media(max-width:600px){
-.zv-feature-list{
-scrollbar-width:none;
-scroll-behavior:smooth;
-padding:4px 2px 10px;
-}
-.zv-feature-list::-webkit-scrollbar{display:none}
-.zv-feature-list button{
-flex:0 0 auto;
-min-height:52px;
-}
-}
-</style>
-<style>
-#zv-cta{
-display:flex;gap:12px;margin-top:28px;
-}
-#zv-cta a{
-padding:14px 20px;text-decoration:none;
-font:800 11px Arial;letter-spacing:.08em;
-transition:.2s;
-}
-#zv-explore{
-background:#1683ff;color:#fff;
-box-shadow:0 0 25px #1683ff35;
-}
-#zv-register{
-border:1px solid #1683ff66;color:#fff;
-background:#ffffff05;
-}
-#zv-cta a:active{
-transform:scale(.94);
-box-shadow:0 0 30px #1683ff55;
-}
-@media(max-width:600px){
-#zv-cta{width:100%;gap:10px}
-#zv-cta a{text-align:center;flex:1;padding:15px 8px}
-}
-</style>
-<script>
-document.querySelector("#zv-copy p").insertAdjacentHTML("afterend",`
-<div id="zv-cta">
-<a id="zv-explore" href="#zv-features">EXPLORE ZORVAN</a>
-<a id="zv-register" href="#zv-register-section">PRE-REGISTER</a>
-</div>`);
-</script>
-<style>
-html{scroll-behavior:smooth}
-#zv-features{
-scroll-margin-top:20px;
-}
-#zv-features:target{
-animation:zvFocus .8s ease;
-}
-@keyframes zvFocus{
-0%{box-shadow:inset 0 0 0 #1683ff00}
-50%{box-shadow:inset 0 0 45px #1683ff18}
-100%{box-shadow:inset 0 0 0 #1683ff00}
-}
-</style>
 
-<script>
-document.querySelector("#zv-explore").onclick=e=>{
-e.preventDefault();
-document.querySelector("#zv-features")
-.scrollIntoView({behavior:"smooth",block:"start"});
-};
-</script>
-<style>
-.zv-feature-panel{
-transition:opacity .25s ease,transform .25s ease,
+.cta a:hover::before{
+left:140%;
+}
+
+.cta a:active{
+transform:scale(.94);
+}
+
+.primary{
+box-shadow:
+0 0 0 #1683ff00;
+transition:
+transform .25s ease,
 box-shadow .3s ease;
 }
-.zv-panel-out{
-opacity:0;
-transform:translateY(10px);
-box-shadow:0 0 35px #1683ff18;
+
+.primary:hover{
+transform:translateY(-2px);
+box-shadow:
+0 0 18px #1683ff66,
+0 0 45px #1683ff22;
 }
-.zv-panel-in{
-animation:zvPanelIn .4s ease forwards;
+
+.secondary:hover{
+border-color:#1683ff;
+box-shadow:0 0 18px #1683ff22;
 }
-@keyframes zvPanelIn{
-from{opacity:0;transform:translateY(-8px)}
-to{opacity:1;transform:translateY(0)}
+
+.eyebrow{
+animation:zvEyebrow 2.5s ease-in-out infinite alternate;
 }
-@media(max-width:600px){
-.zv-feature-panel{min-height:275px}
+
+@keyframes zvEyebrow{
+from{opacity:.65}
+to{
+opacity:1;
+text-shadow:0 0 12px #1683ff88;
+}
+}
+</style>
+<style>
+#intro{
+min-height:85svh;
+padding:90px 22px;
+position:relative;
+display:flex;
+align-items:center;
+overflow:hidden;
+background:#05070b;
+}
+.intro-line{
+position:absolute;
+left:22px;top:0;
+width:1px;height:100%;
+background:linear-gradient(
+transparent,#1683ff66,transparent
+);
+}
+.intro-wrap{
+position:relative;
+z-index:2;
+}
+.intro-tag{
+font-size:10px;
+letter-spacing:.22em;
+font-weight:800;
+color:#1683ff;
+margin-bottom:18px;
+}
+.intro-title{
+font-size:clamp(38px,12vw,58px);
+line-height:.95;
+letter-spacing:-.055em;
+margin:0 0 24px;
+}
+.intro-title span{
+color:#1683ff;
+}
+.intro-text{
+font-size:14px;
+line-height:1.75;
+color:#8993a3;
+max-width:330px;
+}
+.intro-accent{
+margin-top:42px;
+height:2px;
+width:90px;
+background:#1683ff;
+box-shadow:0 0 18px #1683ff;
+position:relative;
+}
+.intro-accent::after{
+content:"";
+position:absolute;
+left:0;top:-4px;
+width:18px;height:10px;
+background:#1683ff;
+filter:blur(6px);
+animation:introFlow 2s linear infinite;
+}
+@keyframes introFlow{
+0%{left:0}
+100%{left:90px}
 }
 </style>
 
+<section id="intro">
+<div class="intro-line"></div>
+<div class="intro-wrap">
+<div class="intro-tag">WELCOME TO ZORVAN</div>
+
+<h2 class="intro-title">
+BUILT FOR<br>
+THE <span>COMPETITIVE</span>.
+</h2>
+
+<p class="intro-text">
+ZORVAN is being built for players who want
+more than just another tournament platform.
+Compete. Build your legacy. Rise through performance.
+</p>
+
+<div class="intro-accent"></div>
+</div>
+</section>
+<style>
+#features{
+padding:85px 20px;
+background:#05070b;
+position:relative;
+}
+.f-head{
+margin-bottom:35px;
+}
+.f-tag{
+font-size:9px;
+letter-spacing:.22em;
+color:#1683ff;
+font-weight:800;
+}
+.f-title{
+font-size:42px;
+line-height:.95;
+letter-spacing:-.06em;
+margin:14px 0;
+}
+.f-title span{color:#1683ff}
+.f-card{
+position:relative;
+min-height:155px;
+margin:14px 0;
+padding:25px 20px;
+border:1px solid #ffffff10;
+background:linear-gradient(
+135deg,#ffffff06,#1683ff03
+);
+overflow:hidden;
+transition:.35s ease;
+}
+.f-card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+110deg,transparent,#1683ff20,transparent
+);
+transform:translateX(-100%);
+transition:.6s ease;
+}
+.f-card.active,
+.f-card:active{
+border-color:#1683ff88;
+box-shadow:0 0 30px #1683ff18;
+transform:translateY(-3px);
+}
+.f-card.active::before,
+.f-card:active::before{
+transform:translateX(100%);
+}
+.f-num{
+font-size:10px;
+color:#1683ff;
+font-weight:800;
+letter-spacing:.15em;
+}
+.f-card h3{
+font-size:24px;
+margin:18px 0 8px;
+}
+.f-card p{
+margin:0;
+font-size:12px;
+line-height:1.6;
+color:#7f8999;
+}
+</style>
+
+<section id="features">
+<div class="f-head">
+<div class="f-tag">THE ZORVAN EXPERIENCE</div>
+<h2 class="f-title">BUILT TO<br><span>COMPETE.</span></h2>
+</div>
+
+<div class="f-card">
+<div class="f-num">01 / PLAYER</div>
+<h3>BUILD YOUR IDENTITY.</h3>
+<p>Your profile, performance, achievements and competitive journey.</p>
+</div>
+
+<div class="f-card">
+<div class="f-num">02 / TOURNAMENT</div>
+<h3>ENTER THE ARENA.</h3>
+<p>Discover competitive tournaments and prove yourself where it matters.</p>
+</div>
+
+<div class="f-card">
+<div class="f-num">03 / LEGACY</div>
+<h3>RISE THROUGH PERFORMANCE.</h3>
+<p>Every verified performance becomes part of your ZORVAN journey.</p>
+</div>
+</section>
+
 <script>
-document.querySelectorAll(".zv-feature-list button").forEach(btn=>{
-btn.addEventListener("click",()=>{
-const panel=document.querySelector(".zv-feature-panel");
-panel.classList.add("zv-panel-out");
-setTimeout(()=>{
-panel.classList.remove("zv-panel-out");
-panel.classList.add("zv-panel-in");
-setTimeout(()=>panel.classList.remove("zv-panel-in"),450);
-},220);
+document.querySelectorAll(".f-card").forEach(card=>{
+card.addEventListener("click",()=>{
+document.querySelectorAll(".f-card")
+.forEach(c=>c.classList.remove("active"));
+card.classList.add("active");
 });
 });
 </script>
 <style>
-#zv-community{padding:90px 22px;background:#05070b}
-#zv-community h2{font-size:46px;line-height:.95;margin:16px 0 20px}
-#zv-community>p{color:#8993a3;font-size:14px;line-height:1.7}
-.zv-community-card{margin-top:35px;padding:24px;
-border:1px solid #ffffff0d;background:#080c14;
-box-shadow:0 0 45px #1683ff10}
-.zv-community-card small{color:#1683ff}
-.zv-community-card h3{font-size:25px;margin:12px 0}
-.zv-community-card span{color:#697485;font-size:12px;line-height:1.6}
+#journey{
+min-height:100svh;padding:100px 22px;
+position:relative;overflow:hidden;
+display:flex;align-items:center;
+background:#05070b;
+}
+.j-glow{
+position:absolute;width:260px;height:260px;
+right:-140px;top:35%;
+background:#1683ff22;
+filter:blur(80px);
+}
+.j-wrap{position:relative;z-index:2;width:100%}
+.j-small{
+font-size:9px;letter-spacing:.25em;
+color:#1683ff;font-weight:800;
+}
+.j-title{
+font-size:52px;line-height:.86;
+letter-spacing:-.07em;margin:18px 0 55px;
+}
+.j-title span{color:#1683ff}
+.j-step{
+position:relative;padding:0 0 38px 35px;
+border-left:1px solid #1683ff33;
+}
+.j-step:last-child{border-left-color:transparent}
+.j-dot{
+position:absolute;left:-5px;top:2px;
+width:9px;height:9px;border-radius:50%;
+background:#1683ff;
+box-shadow:0 0 18px #1683ff;
+}
+.j-step b{
+font-size:11px;letter-spacing:.15em;
+color:#1683ff;
+}
+.j-step h3{
+font-size:25px;margin:9px 0 7px;
+letter-spacing:-.04em;
+}
+.j-step p{
+margin:0;color:#737e8e;
+font-size:12px;line-height:1.6;
+max-width:280px;
+}
 </style>
-<script>
-document.querySelector("#zv-comp").insertAdjacentHTML("afterend",`
-<section id="zv-community">
-<small>COMMUNITY</small>
-<h2>COMPETE<br>TOGETHER.</h2>
-<p>A competitive community built around players, teams, communication and shared progress.</p>
-<div class="zv-community-card">
-<small>WORLD CHAT</small>
-<h3>YOUR COMMUNITY.</h3>
-<span>Connect with players, follow announcements, discover teams and stay connected with the ZORVAN competitive ecosystem.</span>
+
+<section id="journey">
+<div class="j-glow"></div>
+<div class="j-wrap">
+<div class="j-small">YOUR ZORVAN JOURNEY</div>
+
+<h2 class="j-title">
+FROM<br>
+PLAYER<br>
+TO <span>LEGACY.</span>
+</h2>
+
+<div class="j-step">
+<div class="j-dot"></div>
+<b>01 / REGISTER</b>
+<h3>BUILD.</h3>
+<p>Create your identity and establish your place in the ZORVAN ecosystem.</p>
 </div>
-</section>`);
-</script>
-<style>
-#zv-rank{padding:90px 22px;background:#070a10}
-#zv-rank h2{font-size:44px;line-height:.95;margin:16px 0 35px}
-.zv-rank-card{padding:24px;margin-bottom:12px;
-background:#05070b;border:1px solid #ffffff0d}
-.zv-rank-card b{color:#1683ff;font-size:11px;letter-spacing:.12em}
-.zv-rank-card h3{font-size:23px;margin:12px 0}
-.zv-rank-card p{color:#7f8998;font-size:13px;line-height:1.6;margin:0}
-</style>
-<script>
-document.querySelector("#zv-community").insertAdjacentHTML("afterend",`
-<section id="zv-rank">
-<small>IDENTITY & PERFORMANCE</small>
-<h2>FIND YOUR<br>PLACE.</h2>
-<div class="zv-rank-card">
-<b>TEAMS</b>
-<h3>BUILD TOGETHER.</h3>
-<p>Create a team, build its identity, manage members and create a competitive history.</p>
+
+<div class="j-step">
+<div class="j-dot"></div>
+<b>02 / COMPETE</b>
+<h3>PERFORM.</h3>
+<p>Enter competitive tournaments and turn every match into experience.</p>
 </div>
-<div class="zv-rank-card">
-<b>RANKINGS</b>
-<h3>EARN YOUR POSITION.</h3>
-<p>Verified competitive performance shapes player and team rankings over time.</p>
+
+<div class="j-step">
+<div class="j-dot"></div>
+<b>03 / RISE</b>
+<h3>LEAVE A MARK.</h3>
+<p>Your verified performances become part of your competitive legacy.</p>
 </div>
-</section>`);
-</script>
+</div>
+</section>
