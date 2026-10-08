@@ -503,3 +503,25 @@ document.querySelector("#zv-copy p").insertAdjacentHTML("afterend",`
 <a id="zv-register" href="#zv-register-section">PRE-REGISTER</a>
 </div>`);
 </script>
+<style>
+html{scroll-behavior:smooth}
+#zv-features{
+scroll-margin-top:20px;
+}
+#zv-features:target{
+animation:zvFocus .8s ease;
+}
+@keyframes zvFocus{
+0%{box-shadow:inset 0 0 0 #1683ff00}
+50%{box-shadow:inset 0 0 45px #1683ff18}
+100%{box-shadow:inset 0 0 0 #1683ff00}
+}
+</style>
+
+<script>
+document.querySelector("#zv-explore").onclick=e=>{
+e.preventDefault();
+document.querySelector("#zv-features")
+.scrollIntoView({behavior:"smooth",block:"start"});
+};
+</script>
