@@ -460,3 +460,293 @@ TO <span>LEGACY.</span>
 </div>
 </div>
 </section>
+<style>
+#founding{
+min-height:90svh;padding:95px 20px;
+position:relative;overflow:hidden;
+background:#05070b;
+display:flex;align-items:center;
+}
+.found-glow{
+position:absolute;width:380px;height:380px;
+left:50%;top:45%;
+transform:translate(-50%,-50%);
+background:#1683ff18;
+filter:blur(100px);
+}
+.found-wrap{
+position:relative;z-index:2;width:100%;
+}
+.found-tag{
+font-size:9px;font-weight:800;
+letter-spacing:.25em;color:#1683ff;
+}
+.found-title{
+font-size:52px;line-height:.86;
+letter-spacing:-.07em;margin:18px 0 22px;
+}
+.found-title span{color:#1683ff}
+.found-text{
+font-size:13px;line-height:1.7;
+color:#8993a3;max-width:320px;
+}
+.found-list{
+margin:38px 0;
+padding:0;list-style:none;
+}
+.found-list li{
+padding:13px 0;
+border-bottom:1px solid #ffffff0d;
+font-size:11px;color:#cbd1da;
+}
+.found-list li::before{
+content:"✦";
+color:#1683ff;
+margin-right:12px;
+}
+.found-btn{
+display:block;text-align:center;
+padding:17px;
+background:#1683ff;
+color:#fff;text-decoration:none;
+font-size:10px;font-weight:900;
+letter-spacing:.15em;
+box-shadow:0 0 25px #1683ff22;
+transition:.3s;
+}
+.found-btn:active{
+transform:scale(.97);
+box-shadow:0 0 35px #1683ff66;
+}
+</style>
+
+<section id="founding">
+<div class="found-glow"></div>
+<div class="found-wrap">
+<div class="found-tag">FOUNDING PLAYER / 001</div>
+
+<h2 class="found-title">
+BE THERE<br>
+FROM <span>DAY ONE.</span>
+</h2>
+
+<p class="found-text">
+Pre-register for ZORVAN and become part of the
+community before the platform officially launches.
+</p>
+
+<ul class="found-list">
+<li>Founding Player recognition</li>
+<li>Early access opportunity</li>
+<li>Priority tournament notifications</li>
+<li>Exclusive launch benefits</li>
+<li>No competitive advantage</li>
+</ul>
+
+<a href="#register" class="found-btn">
+BECOME A FOUNDING PLAYER →
+</a>
+</div>
+</section>
+<style>
+#register{
+padding:90px 20px;
+background:#05070b;
+position:relative;
+}
+.reg-tag{
+font-size:9px;letter-spacing:.22em;
+color:#1683ff;font-weight:800;
+}
+.reg-title{
+font-size:44px;line-height:.9;
+letter-spacing:-.06em;
+margin:15px 0 30px;
+}
+.reg-title span{color:#1683ff}
+.reg-form{display:grid;gap:12px}
+.reg-form input{
+width:100%;padding:16px;
+border:1px solid #ffffff12;
+background:#ffffff05;
+color:#fff;outline:none;
+font-size:13px;
+border-radius:0;
+}
+.reg-form input:focus{
+border-color:#1683ff;
+box-shadow:0 0 20px #1683ff14;
+}
+.reg-check{
+display:flex;gap:10px;
+align-items:flex-start;
+margin:8px 0;
+font-size:10px;
+line-height:1.5;color:#788394;
+}
+.reg-check input{accent-color:#1683ff}
+.reg-submit{
+border:0;padding:17px;
+background:#1683ff;color:#fff;
+font-size:10px;font-weight:900;
+letter-spacing:.15em;
+}
+.reg-note{
+font-size:9px;color:#566172;
+line-height:1.6;
+margin-top:12px;
+}
+</style>
+
+<section id="register">
+<div class="reg-tag">PRE-REGISTRATION / ZORVAN V1</div>
+
+<h2 class="reg-title">
+CLAIM YOUR<br><span>IDENTITY.</span>
+</h2>
+
+<form class="reg-form" id="regForm">
+<input type="text" placeholder="Your name" required>
+<input type="tel" placeholder="Phone number" required>
+<input type="text" placeholder="Free Fire UID" required>
+<input type="text" placeholder="Free Fire in-game name" required>
+<input type="text" placeholder="Phone model/name" required>
+
+<label class="reg-check">
+<input type="checkbox" required>
+<span>I agree to the ZORVAN Terms & Conditions and Privacy Policy.</span>
+</label>
+
+<button class="reg-submit" type="submit">
+PRE-REGISTER →
+</button>
+</form>
+
+<div class="reg-note">
+Your information will be used for ZORVAN pre-launch communication
+and registration purposes.
+</div>
+</section>
+
+<script>
+document.querySelector("#regForm").addEventListener("submit",e=>{
+e.preventDefault();
+alert("Registration system coming next.");
+});
+</script>
+<style>
+#staff{
+padding:90px 20px;
+background:#05070b;
+position:relative;
+}
+.staff-tag{
+font-size:9px;letter-spacing:.22em;
+color:#1683ff;font-weight:800;
+}
+.staff-title{
+font-size:43px;line-height:.9;
+letter-spacing:-.06em;
+margin:15px 0 18px;
+}
+.staff-title span{color:#1683ff}
+.staff-text{
+font-size:13px;line-height:1.7;
+color:#8993a3;margin-bottom:30px;
+}
+.staff-form{display:grid;gap:12px}
+.staff-form input,
+.staff-form select,
+.staff-form textarea{
+width:100%;padding:16px;
+background:#ffffff05;
+border:1px solid #ffffff12;
+color:#fff;outline:none;
+font-size:13px;
+border-radius:0;
+}
+.staff-form select option{
+background:#05070b;
+}
+.staff-form textarea{
+min-height:100px;
+resize:vertical;
+}
+.staff-form input:focus,
+.staff-form select:focus,
+.staff-form textarea:focus{
+border-color:#1683ff;
+box-shadow:0 0 20px #1683ff14;
+}
+.staff-check{
+display:flex;gap:10px;
+font-size:10px;line-height:1.5;
+color:#788394;
+}
+.staff-check input{
+accent-color:#1683ff;
+margin-top:2px;
+}
+.staff-submit{
+border:0;padding:17px;
+background:#1683ff;color:#fff;
+font-size:10px;font-weight:900;
+letter-spacing:.15em;
+}
+.staff-note{
+font-size:9px;color:#566172;
+line-height:1.6;margin-top:12px;
+}
+</style>
+
+<section id="staff">
+<div class="staff-tag">ZORVAN / OFFICIAL STAFF</div>
+
+<h2 class="staff-title">
+BUILD THE<br><span>ARENA.</span>
+</h2>
+
+<p class="staff-text">
+Join the people helping build a fair, competitive
+and organized ZORVAN ecosystem.
+</p>
+
+<form class="staff-form" id="staffForm">
+
+<input type="text" placeholder="Your name" required>
+<input type="tel" placeholder="Phone number" required>
+<input type="text" placeholder="ZORVAN username" required>
+
+<select required>
+<option value="">Select staff role</option>
+<option>Tournament Staff</option>
+<option>Match / Result Staff</option>
+<option>Community Moderator</option>
+<option>Support Staff</option>
+<option>Content / Community Staff</option>
+</select>
+
+<textarea placeholder="Why do you want to join ZORVAN?" required></textarea>
+
+<label class="staff-check">
+<input type="checkbox" required>
+<span>I agree to the ZORVAN Staff Terms & Conditions.</span>
+</label>
+
+<button class="staff-submit" type="submit">
+APPLY FOR STAFF →
+</button>
+
+</form>
+
+<div class="staff-note">
+Applications are reviewed before staff access is granted.
+</div>
+</section>
+
+<script>
+document.querySelector("#staffForm").addEventListener("submit",e=>{
+e.preventDefault();
+alert("Staff application system coming next.");
+});
+</script>
