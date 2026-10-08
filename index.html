@@ -750,3 +750,31 @@ e.preventDefault();
 alert("Staff application system coming next.");
 });
 </script>
+<script type="module">
+import{initializeApp}from
+"https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+
+import{getFirestore}from
+"https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+
+import{getAuth,GoogleAuthProvider}from
+"https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+
+const firebaseConfig={
+apiKey: "AIzaSyAP2IJYQczFwXwgSyErZy7qWj9E_A96SXg"
+authDomain:https://zorvan-website.firebaseapp.com
+projectId:"zorvan-website",
+storageBucket:https://zorvan-website.firebasestorage.app
+messagingSenderId:95656144821
+appId:"1:95656144821:web:87020f0b7e4e86f36bb3fc"
+};
+
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
+const auth=getAuth(app);
+const googleProvider=new GoogleAuthProvider();
+
+window.zorvanFirebase={app,db,auth,googleProvider};
+
+console.log("ZORVAN Firebase connected");
+</script>
