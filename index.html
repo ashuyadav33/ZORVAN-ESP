@@ -525,3 +525,88 @@ document.querySelector("#zv-features")
 .scrollIntoView({behavior:"smooth",block:"start"});
 };
 </script>
+<style>
+.zv-feature-panel{
+transition:opacity .25s ease,transform .25s ease,
+box-shadow .3s ease;
+}
+.zv-panel-out{
+opacity:0;
+transform:translateY(10px);
+box-shadow:0 0 35px #1683ff18;
+}
+.zv-panel-in{
+animation:zvPanelIn .4s ease forwards;
+}
+@keyframes zvPanelIn{
+from{opacity:0;transform:translateY(-8px)}
+to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:600px){
+.zv-feature-panel{min-height:275px}
+}
+</style>
+
+<script>
+document.querySelectorAll(".zv-feature-list button").forEach(btn=>{
+btn.addEventListener("click",()=>{
+const panel=document.querySelector(".zv-feature-panel");
+panel.classList.add("zv-panel-out");
+setTimeout(()=>{
+panel.classList.remove("zv-panel-out");
+panel.classList.add("zv-panel-in");
+setTimeout(()=>panel.classList.remove("zv-panel-in"),450);
+},220);
+});
+});
+</script>
+<style>
+#zv-community{padding:90px 22px;background:#05070b}
+#zv-community h2{font-size:46px;line-height:.95;margin:16px 0 20px}
+#zv-community>p{color:#8993a3;font-size:14px;line-height:1.7}
+.zv-community-card{margin-top:35px;padding:24px;
+border:1px solid #ffffff0d;background:#080c14;
+box-shadow:0 0 45px #1683ff10}
+.zv-community-card small{color:#1683ff}
+.zv-community-card h3{font-size:25px;margin:12px 0}
+.zv-community-card span{color:#697485;font-size:12px;line-height:1.6}
+</style>
+<script>
+document.querySelector("#zv-comp").insertAdjacentHTML("afterend",`
+<section id="zv-community">
+<small>COMMUNITY</small>
+<h2>COMPETE<br>TOGETHER.</h2>
+<p>A competitive community built around players, teams, communication and shared progress.</p>
+<div class="zv-community-card">
+<small>WORLD CHAT</small>
+<h3>YOUR COMMUNITY.</h3>
+<span>Connect with players, follow announcements, discover teams and stay connected with the ZORVAN competitive ecosystem.</span>
+</div>
+</section>`);
+</script>
+<style>
+#zv-rank{padding:90px 22px;background:#070a10}
+#zv-rank h2{font-size:44px;line-height:.95;margin:16px 0 35px}
+.zv-rank-card{padding:24px;margin-bottom:12px;
+background:#05070b;border:1px solid #ffffff0d}
+.zv-rank-card b{color:#1683ff;font-size:11px;letter-spacing:.12em}
+.zv-rank-card h3{font-size:23px;margin:12px 0}
+.zv-rank-card p{color:#7f8998;font-size:13px;line-height:1.6;margin:0}
+</style>
+<script>
+document.querySelector("#zv-community").insertAdjacentHTML("afterend",`
+<section id="zv-rank">
+<small>IDENTITY & PERFORMANCE</small>
+<h2>FIND YOUR<br>PLACE.</h2>
+<div class="zv-rank-card">
+<b>TEAMS</b>
+<h3>BUILD TOGETHER.</h3>
+<p>Create a team, build its identity, manage members and create a competitive history.</p>
+</div>
+<div class="zv-rank-card">
+<b>RANKINGS</b>
+<h3>EARN YOUR POSITION.</h3>
+<p>Verified competitive performance shapes player and team rankings over time.</p>
+</div>
+</section>`);
+</script>
