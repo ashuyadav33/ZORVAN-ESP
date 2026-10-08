@@ -107,3 +107,36 @@ background:linear-gradient(#05070bdd,transparent);
 <nav id="zv-nav">
 <img src="./logo.png" alt="ZORVAN">
 </nav>
+<style>
+#zv-links{margin-left:auto;display:flex;gap:28px}
+#zv-links a{color:#aeb7c6;text-decoration:none;font:600 12px Arial;letter-spacing:.08em}
+#zv-links a:hover{color:#1683ff}
+#zv-menu{display:none;color:#fff;font-size:22px}
+@media(max-width:600px){
+#zv-links{display:none}
+#zv-menu{display:block;margin-left:auto}
+}
+</style>
+
+<script>
+document.querySelector("#zv-nav").insertAdjacentHTML("beforeend",`
+<div id="zv-links">
+<a href="#about">ABOUT</a>
+<a href="#features">FEATURES</a>
+<a href="#tournaments">TOURNAMENTS</a>
+<a href="#community">COMMUNITY</a>
+</div>
+<div id="zv-menu">☰</div>
+`);
+</script>
+<script>
+document.querySelector("#zv-nav").innerHTML=`
+<img src="./logo.png" alt="ZORVAN">
+<div id="zv-links">
+<a href="#about">ABOUT</a>
+<a href="#features">FEATURES</a>
+<a href="#tournaments">TOURNAMENTS</a>
+<a href="#community">COMMUNITY</a>
+</div>
+<a id="zv-join" href="#register">PRE-REGISTER</a>`;
+</script>
