@@ -470,3 +470,36 @@ min-height:52px;
 }
 }
 </style>
+<style>
+#zv-cta{
+display:flex;gap:12px;margin-top:28px;
+}
+#zv-cta a{
+padding:14px 20px;text-decoration:none;
+font:800 11px Arial;letter-spacing:.08em;
+transition:.2s;
+}
+#zv-explore{
+background:#1683ff;color:#fff;
+box-shadow:0 0 25px #1683ff35;
+}
+#zv-register{
+border:1px solid #1683ff66;color:#fff;
+background:#ffffff05;
+}
+#zv-cta a:active{
+transform:scale(.94);
+box-shadow:0 0 30px #1683ff55;
+}
+@media(max-width:600px){
+#zv-cta{width:100%;gap:10px}
+#zv-cta a{text-align:center;flex:1;padding:15px 8px}
+}
+</style>
+<script>
+document.querySelector("#zv-copy p").insertAdjacentHTML("afterend",`
+<div id="zv-cta">
+<a id="zv-explore" href="#zv-features">EXPLORE ZORVAN</a>
+<a id="zv-register" href="#zv-register-section">PRE-REGISTER</a>
+</div>`);
+</script>
